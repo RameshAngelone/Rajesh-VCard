@@ -169,7 +169,7 @@
         .hero {
             display: grid;
             grid-template-columns: 1fr auto;
-            gap: 24px;
+            gap: 28px;
             align-items: center;
             margin-bottom: 6px;
             position: relative;
@@ -246,21 +246,26 @@
             color: #d4af37;
         }
 
-        /* ─── Profile Photo ─── */
+        /* ─── Profile Photo (Rectangle) ─── */
         .profile-wrapper {
             flex-shrink: 0;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 8px;
         }
 
         .profile-frame {
             width: 130px;
-            height: 130px;
-            border-radius: 50%;
+            height: 160px;
+            border-radius: 16px;
             padding: 4px;
             background: linear-gradient(135deg, #d4af37, #b8922a, #d4af37);
             box-shadow: 0 0 40px rgba(212, 175, 55, 0.12), 0 0 80px rgba(212, 175, 55, 0.04);
             animation: glowPulse 4s ease-in-out infinite;
             position: relative;
+            flex-shrink: 0;
         }
 
         @keyframes glowPulse {
@@ -276,7 +281,7 @@
         .profile-frame img {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
+            border-radius: 12px;
             object-fit: cover;
             display: block;
             background: #ffffff !important;
@@ -286,7 +291,7 @@
         .profile-frame .placeholder-icon {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
+            border-radius: 12px;
             background: linear-gradient(135deg, #fcf8f2, #f5ede0);
             display: flex;
             align-items: center;
@@ -296,11 +301,11 @@
             color: #b8922a;
         }
 
-        /* ─── Gold Ring Animation ─── */
+        /* ─── Gold Ring Animation (Rectangle) ─── */
         .profile-frame .gold-ring {
             position: absolute;
             inset: -6px;
-            border-radius: 50%;
+            border-radius: 20px;
             padding: 3px;
             background: conic-gradient(from 0deg, transparent, #d4af37, transparent, #f0d060, transparent);
             -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -308,7 +313,7 @@
             mask-composite: exclude;
             pointer-events: none;
             animation: spinRing 8s linear infinite;
-            opacity: 0.4;
+            opacity: 0.6;
         }
 
         @keyframes spinRing {
@@ -318,6 +323,27 @@
             100% {
                 transform: rotate(360deg);
             }
+        }
+
+        /* ─── Profile Info (Name & Phone below image) ─── */
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0px;
+        }
+
+        .profile-info .profile-name {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1a0f08;
+            line-height: 1.2;
+        }
+
+        .profile-info .profile-phone {
+            font-size: 13px;
+            font-weight: 500;
+            color: #5a4a3a;
         }
 
         /* ─── Action Buttons Row ─── */
@@ -1584,7 +1610,7 @@
             }
             .profile-frame {
                 width: 110px;
-                height: 110px;
+                height: 135px;
                 margin: 0 auto;
             }
             .profile-wrapper {
@@ -1731,6 +1757,12 @@
                 font-size: 11px;
                 padding: 6px 16px;
             }
+            .profile-info .profile-name {
+                font-size: 15px;
+            }
+            .profile-info .profile-phone {
+                font-size: 12px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1757,7 +1789,8 @@
             }
             .profile-frame {
                 width: 90px;
-                height: 90px;
+                height: 110px;
+                margin: 0 auto;
             }
             .profile-frame .placeholder-icon {
                 font-size: 38px;
@@ -1940,6 +1973,12 @@
                 font-size: 10px;
                 padding: 5px 14px;
             }
+            .profile-info .profile-name {
+                font-size: 14px;
+            }
+            .profile-info .profile-phone {
+                font-size: 11px;
+            }
         }
 
         @media (max-width: 360px) {
@@ -1966,7 +2005,7 @@
             }
             .profile-frame {
                 width: 120px;
-                height: 120px;
+                height: 150px;
             }
             .element-btn .el-icon {
                 font-size: 20px;
@@ -2097,6 +2136,13 @@
                 border-color: #d4af37 !important;
                 box-shadow: none !important;
                 animation: none !important;
+                border-radius: 12px !important;
+            }
+            .profile-frame img {
+                border-radius: 8px !important;
+            }
+            .profile-frame .gold-ring {
+                display: none !important;
             }
             .action-btn {
                 color: #000 !important;
@@ -2157,6 +2203,12 @@
             .gpay-box .gpay-qr {
                 border-color: #d4af37 !important;
             }
+            .profile-info .profile-name {
+                color: #000 !important;
+            }
+            .profile-info .profile-phone {
+                color: #666 !important;
+            }
         }
     </style>
 </head>
@@ -2201,6 +2253,10 @@
                         <!-- REPLACE THE SRC WITH YOUR PHOTO URL -->
                         <img src="rajesh.png" alt="Raajesh Tank">
                         <div class="gold-ring"></div>
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-name">Raajesh Tank</div>
+                        <div class="profile-phone">+91 98765 43210</div>
                     </div>
                 </div>
             </div>
@@ -3089,7 +3145,7 @@
         console.log('🌐 Website: www.vastulaksitah.com');
         console.log('📧 Email: vastushakkti@gmail.com');
         console.log('✨ Features: Gold Particles | Testimonials | Vastu Tips | GPay QR | Animated Counters | Floating Buttons');
-        console.log('📸 To add your photo: Uncomment the <img> tag in .profile-frame and replace src with your photo URL');
+        console.log('📸 To add your photo: Replace the src in .profile-frame img with your photo URL');
         console.log('📱 To add GPay QR: Replace the placeholder in .gpay-qr with your QR code image');
     </script>
 
