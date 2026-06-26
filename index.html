@@ -80,7 +80,7 @@
             height: 100%;
             z-index: 0;
             pointer-events: none;
-            opacity: 0.4;
+            opacity: 0.35;
         }
 
         /* ─── Main Container ─── */
@@ -103,6 +103,7 @@
             padding: 28px 32px 24px;
             transition: transform 0.4s ease, box-shadow 0.4s ease;
             position: relative;
+            overflow: hidden;
         }
 
         .glass-frame:hover {
@@ -142,26 +143,25 @@
             display: none;
         }
 
-        /* ─── Glow Bar ─── */
-        .glow-bar {
-            width: 100%;
-            height: 4px;
-            border-radius: 4px;
-            background: linear-gradient(90deg, #b8922a, #d4af37, #f0d060, #d4af37, #b8922a);
-            background-size: 300% 100%;
-            animation: shimmerBar 4s linear infinite;
-            margin-bottom: 20px;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.08);
-            position: relative;
-            z-index: 1;
+        /* ─── Subtle Gold Shimmer Overlay ─── */
+        .glass-frame .shimmer-overlay {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(212, 175, 55, 0.02) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+            animation: shimmerMove 12s ease-in-out infinite alternate;
         }
 
-        @keyframes shimmerBar {
+        @keyframes shimmerMove {
             0% {
-                background-position: 0% 0%;
+                transform: translate(-10%, -10%) rotate(0deg);
             }
             100% {
-                background-position: 300% 0%;
+                transform: translate(10%, 10%) rotate(5deg);
             }
         }
 
@@ -210,6 +210,18 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            background-size: 200% 100%;
+            animation: goldTextShine 4s ease-in-out infinite;
+        }
+
+        @keyframes goldTextShine {
+            0%,
+            100% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 0%;
+            }
         }
 
         .hero-content .profession {
@@ -241,12 +253,12 @@
         }
 
         .profile-frame {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
             padding: 4px;
             background: linear-gradient(135deg, #d4af37, #b8922a, #d4af37);
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.10);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.12), 0 0 80px rgba(212, 175, 55, 0.04);
             animation: glowPulse 4s ease-in-out infinite;
             position: relative;
         }
@@ -254,10 +266,10 @@
         @keyframes glowPulse {
             0%,
             100% {
-                box-shadow: 0 0 30px rgba(212, 175, 55, 0.06);
+                box-shadow: 0 0 30px rgba(212, 175, 55, 0.06), 0 0 60px rgba(212, 175, 55, 0.02);
             }
             50% {
-                box-shadow: 0 0 60px rgba(212, 175, 55, 0.14);
+                box-shadow: 0 0 60px rgba(212, 175, 55, 0.16), 0 0 100px rgba(212, 175, 55, 0.05);
             }
         }
 
@@ -275,12 +287,37 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: #ffffff !important;
+            background: linear-gradient(135deg, #fcf8f2, #f5ede0);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 48px;
+            font-size: 52px;
             border: 2px solid rgba(212, 175, 55, 0.10);
+            color: #b8922a;
+        }
+
+        /* ─── Gold Ring Animation ─── */
+        .profile-frame .gold-ring {
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            padding: 3px;
+            background: conic-gradient(from 0deg, transparent, #d4af37, transparent, #f0d060, transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            animation: spinRing 8s linear infinite;
+            opacity: 0.4;
+        }
+
+        @keyframes spinRing {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         /* ─── Action Buttons Row ─── */
@@ -544,27 +581,25 @@
             z-index: 1;
         }
 
-        .stat-btn {
+        .stat-box {
             background: #ffffff !important;
             border: 1.5px solid rgba(212, 175, 55, 0.30);
             border-radius: 14px;
             padding: 12px 6px;
             text-align: center;
-            cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-            position: relative;
-            overflow: hidden;
+            cursor: default;
         }
 
-        .stat-btn:hover {
+        .stat-box:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(212, 175, 55, 0.06);
             background: #fcf8f2 !important;
             border-color: #d4af37;
         }
 
-        .stat-btn .num {
+        .stat-box .num {
             font-size: 30px;
             font-weight: 900;
             color: #b8922a;
@@ -572,7 +607,7 @@
             line-height: 1.1;
         }
 
-        .stat-btn .lbl {
+        .stat-box .lbl {
             font-size: 9px;
             color: #8a7a6a;
             text-transform: uppercase;
@@ -582,8 +617,8 @@
             margin-top: 2px;
         }
 
-        .stat-btn .counter-suffix {
-            font-size: 22px;
+        .stat-box .counter {
+            display: inline;
         }
 
         /* ─── Testimonials Slider ─── */
@@ -731,6 +766,93 @@
 
         .tips-ticker .tip-slide strong {
             color: #b8922a;
+        }
+
+        /* ─── GPay QR Code ─── */
+        .gpay-section {
+            margin-top: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gpay-box {
+            border: 1.5px solid rgba(212, 175, 55, 0.30);
+            border-radius: 14px;
+            background: #ffffff !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .gpay-box .gpay-label {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 2px;
+        }
+
+        .gpay-box .gpay-label .gpay-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1a0f08;
+        }
+
+        .gpay-box .gpay-label .gpay-sub {
+            font-size: 11px;
+            color: #8a7a6a;
+            font-weight: 400;
+        }
+
+        .gpay-box .gpay-qr {
+            width: 80px;
+            height: 80px;
+            border-radius: 12px;
+            border: 2px solid #d4af37;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: #b8922a;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .gpay-box .gpay-qr img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gpay-box .gpay-qr:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.08);
+        }
+
+        .gpay-box .gpay-qr .qr-placeholder {
+            font-size: 32px;
+        }
+
+        .gpay-box .gpay-upi {
+            font-size: 12px;
+            color: #5a4a3a;
+            background: rgba(212, 175, 55, 0.04);
+            padding: 4px 14px;
+            border-radius: 40px;
+            border: 1px solid rgba(212, 175, 55, 0.06);
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gpay-box .gpay-upi:hover {
+            background: rgba(212, 175, 55, 0.08);
+            border-color: rgba(212, 175, 55, 0.12);
         }
 
         /* ─── Google Reviews Button ─── */
@@ -1120,22 +1242,6 @@
             transform: translateX(0);
         }
 
-        .floating-btn .fb-badge {
-            position: absolute;
-            top: -4px;
-            right: -4px;
-            width: 20px;
-            height: 20px;
-            background: #d4af37;
-            color: #ffffff;
-            border-radius: 50%;
-            font-size: 10px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
         .floating-btn.whatsapp {
             background: linear-gradient(135deg, #25D366, #128C7E) !important;
             color: #ffffff;
@@ -1439,8 +1545,8 @@
                 font-size: 14px;
             }
             .profile-frame {
-                width: 100px;
-                height: 100px;
+                width: 110px;
+                height: 110px;
                 margin: 0 auto;
             }
             .profile-wrapper {
@@ -1524,7 +1630,7 @@
             .modal-box .modal-detail-grid {
                 grid-template-columns: 1fr;
             }
-            .stat-btn .num {
+            .stat-box .num {
                 font-size: 26px;
             }
             .social-row {
@@ -1572,6 +1678,17 @@
                 font-size: 18px;
                 margin-right: 10px;
             }
+            .gpay-box {
+                padding: 14px 16px;
+                gap: 14px;
+            }
+            .gpay-box .gpay-qr {
+                width: 70px;
+                height: 70px;
+            }
+            .gpay-box .gpay-label .gpay-title {
+                font-size: 13px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1597,11 +1714,11 @@
                 font-size: 13px;
             }
             .profile-frame {
-                width: 80px;
-                height: 80px;
+                width: 90px;
+                height: 90px;
             }
             .profile-frame .placeholder-icon {
-                font-size: 34px;
+                font-size: 38px;
             }
 
             .elements-grid {
@@ -1629,10 +1746,10 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 6px;
             }
-            .stat-btn .num {
+            .stat-box .num {
                 font-size: 22px;
             }
-            .stat-btn {
+            .stat-box {
                 padding: 10px 4px;
             }
             .action-btn {
@@ -1719,9 +1836,6 @@
                 font-size: 13px;
                 padding: 6px;
             }
-            .glow-bar {
-                margin-bottom: 14px;
-            }
             .floating-actions {
                 bottom: 12px;
                 right: 12px;
@@ -1761,6 +1875,25 @@
                 font-size: 12px;
                 padding: 8px 18px;
             }
+            .gpay-box {
+                padding: 12px 14px;
+                gap: 10px;
+                flex-direction: column;
+                text-align: center;
+            }
+            .gpay-box .gpay-label {
+                align-items: center;
+            }
+            .gpay-box .gpay-qr {
+                width: 80px;
+                height: 80px;
+            }
+            .gpay-box .gpay-label .gpay-title {
+                font-size: 13px;
+            }
+            .gpay-box .gpay-label .gpay-sub {
+                font-size: 10px;
+            }
         }
 
         @media (max-width: 360px) {
@@ -1786,8 +1919,8 @@
                 font-size: 42px;
             }
             .profile-frame {
-                width: 110px;
-                height: 110px;
+                width: 120px;
+                height: 120px;
             }
             .element-btn .el-icon {
                 font-size: 20px;
@@ -1825,7 +1958,7 @@
             }
             .hero-content h1,
             .hero-content h1 .gold,
-            .stat-btn .num {
+            .stat-box .num {
                 -webkit-text-fill-color: #000 !important;
                 background: none !important;
                 color: #000 !important;
@@ -1838,7 +1971,7 @@
             .cta-btn.secondary,
             .action-btn,
             .element-btn,
-            .stat-btn,
+            .stat-box,
             .sub-card,
             .qr-box,
             .reviews-btn,
@@ -1890,15 +2023,15 @@
                 border-color: #d4af37 !important;
                 color: #b8922a !important;
             }
-            .stat-btn {
+            .stat-box {
                 background: #f0f0f0 !important;
                 border-color: #d4af37 !important;
             }
-            .stat-btn .num {
+            .stat-box .num {
                 color: #b8922a !important;
                 -webkit-text-fill-color: #b8922a !important;
             }
-            .stat-btn .lbl {
+            .stat-box .lbl {
                 color: #666 !important;
             }
             .reviews-btn .g-text .g-main {
@@ -1951,7 +2084,8 @@
                 box-shadow: none !important;
             }
             .testimonial-slider,
-            .tips-ticker {
+            .tips-ticker,
+            .gpay-box {
                 border-color: #d4af37 !important;
                 background: #f8f8f8 !important;
             }
@@ -1966,6 +2100,15 @@
             }
             .tips-ticker .tip-slide strong {
                 color: #b8922a !important;
+            }
+            .gpay-box .gpay-label .gpay-title {
+                color: #000 !important;
+            }
+            .gpay-box .gpay-label .gpay-sub {
+                color: #666 !important;
+            }
+            .gpay-box .gpay-qr {
+                border-color: #d4af37 !important;
             }
         }
     </style>
@@ -1995,7 +2138,8 @@
 
         <div class="glass-frame">
 
-            <div class="glow-bar"></div>
+            <!-- Subtle Shimmer Overlay -->
+            <div class="shimmer-overlay"></div>
 
             <!-- ─── HERO ─── -->
             <div class="hero">
@@ -2007,7 +2151,10 @@
                 </div>
                 <div class="profile-wrapper">
                     <div class="profile-frame">
+                        <!-- REPLACE THE SRC WITH YOUR PHOTO URL -->
+                        <!-- <img src="your-photo.jpg" alt="Raajesh Tank" /> -->
                         <div class="placeholder-icon">🕉️</div>
+                        <div class="gold-ring"></div>
                     </div>
                 </div>
             </div>
@@ -2025,10 +2172,6 @@
                 <button class="action-btn" onclick="copyEmail()">
                     <span class="a-icon">✉️</span>
                     <span>Email <span class="a-label">| raajesh@vastu.com</span></span>
-                </button>
-                <button class="action-btn" onclick="copyPhone()">
-                    <span class="a-icon">📋</span>
-                    <span>Copy <span class="a-label">| Phone</span></span>
                 </button>
             </div>
 
@@ -2151,24 +2294,24 @@
                 </div>
             </div>
 
-            <!-- ─── STATS WITH ANIMATED COUNTERS ─── -->
+            <!-- ─── STATS (Non-Clickable) ─── -->
             <div class="stats-grid" id="statsGrid">
-                <button class="stat-btn" onclick="showStat('500+ Consultations')">
+                <div class="stat-box">
                     <span class="num"><span class="counter" data-target="500">0</span>+</span>
                     <span class="lbl">Consultations</span>
-                </button>
-                <button class="stat-btn" onclick="showStat('200+ Happy Clients')">
+                </div>
+                <div class="stat-box">
                     <span class="num"><span class="counter" data-target="200">0</span>+</span>
                     <span class="lbl">Happy Clients</span>
-                </button>
-                <button class="stat-btn" onclick="showStat('15+ Years Experience')">
+                </div>
+                <div class="stat-box">
                     <span class="num"><span class="counter" data-target="15">0</span>+</span>
                     <span class="lbl">Years Experience</span>
-                </button>
-                <button class="stat-btn" onclick="showStat('100% Satisfaction')">
+                </div>
+                <div class="stat-box">
                     <span class="num"><span class="counter" data-target="100">0</span>%</span>
                     <span class="lbl">Satisfaction</span>
-                </button>
+                </div>
             </div>
 
             <!-- ─── TESTIMONIALS SLIDER ─── -->
@@ -2213,6 +2356,28 @@
                         <div class="tip-slide"><strong>North-West</strong> is the air zone — ideal for guests and communication.</div>
                         <div class="tip-slide"><strong>South-West</strong> is the earth zone — perfect for the master bedroom for stability.</div>
                         <div class="tip-slide"><strong>Center</strong> (Brahmasthan) should be kept open and clutter-free for positive energy.</div>
+                        <div class="tip-slide"><strong>East</strong> is the direction of sunrise — place your prayer room or study here.</div>
+                        <div class="tip-slide"><strong>West</strong> is ideal for storage and heavy furniture — it provides stability.</div>
+                        <div class="tip-slide"><strong>North</strong> is the direction of wealth — keep it open and well-lit for financial growth.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── GPAY QR CODE ─── -->
+            <div class="gpay-section">
+                <div class="section-title-wrap" style="margin-bottom:10px;">
+                    <span class="section-title"><span class="icon">📱</span> Pay via GPay / UPI</span>
+                </div>
+                <div class="gpay-box">
+                    <div class="gpay-label">
+                        <span class="gpay-title">Scan to Pay</span>
+                        <span class="gpay-sub">Google Pay · PhonePe · Paytm</span>
+                        <button class="gpay-upi" onclick="copyUpi()">📋 Copy UPI: raajesh@upi</button>
+                    </div>
+                    <div class="gpay-qr" id="gpayQR">
+                        <!-- REPLACE THE SRC WITH YOUR GPAY QR CODE IMAGE -->
+                        <!-- <img src="gpay-qr.png" alt="GPay QR Code" /> -->
+                        <span class="qr-placeholder">📱</span>
                     </div>
                 </div>
             </div>
@@ -2283,7 +2448,7 @@
             <div class="footer">
                 <span>© 2026 <span class="brand">RAAJESH <span>TANK</span></span> — All Rights Reserved</span>
                 <span class="tag">✦ Vastu Correct, Life Perfect ✦</span>
-                <span class="version">vCard v7.0</span>
+                <span class="version">vCard v8.0</span>
             </div>
 
         </div>
@@ -2582,16 +2747,16 @@
             }
         }
 
-        // ─── Copy Phone ───
-        function copyPhone() {
-            const phone = '+919876543210';
-            copyToClipboard(phone, '📞 Phone number copied!');
-        }
-
         // ─── Copy Email ───
         function copyEmail() {
             const email = 'raajesh@vastu.com';
             copyToClipboard(email, '✉️ Email address copied!');
+        }
+
+        // ─── Copy UPI ───
+        function copyUpi() {
+            const upi = 'raajesh@upi';
+            copyToClipboard(upi, '📱 UPI ID copied: raajesh@upi');
         }
 
         // ─── Copy to Clipboard with Toast ───
@@ -2639,11 +2804,6 @@
                 '🕉️ Hello Raajesh Tank,\n\nI would like to book a Vastu consultation. Please share your availability.\n\n📋 Name: \n📍 Location: \n🏠 Type: Residential / Commercial / Industrial'
             );
             window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
-        }
-
-        // ─── Email ───
-        function openEmail() {
-            window.location.href = 'mailto:raajesh@vastu.com?subject=Vastu Consultation Inquiry';
         }
 
         // ─── Google Reviews ───
@@ -2701,11 +2861,6 @@
         function openLocation() {
             const url = 'https://maps.google.com/maps?q=PCMC+Wakad+Pune';
             window.open(url, '_blank');
-        }
-
-        // ─── Stats ───
-        function showStat(name) {
-            alert(`📊 ${name}\n\nWe take pride in our achievements and the trust our clients have placed in us.`);
         }
 
         // ─── Social ───
@@ -2873,11 +3028,13 @@
         }, 1000);
 
         // ─── Console ───
-        console.log('🕉️ Raajesh Tank · Vastu Consultant — Premium vCard v7.0');
+        console.log('🕉️ Raajesh Tank · Vastu Consultant — Premium vCard v8.0');
         console.log('📱 QR encodes:', window.location.href);
         console.log('📍 Location: PCMC, Wakad, Pune');
         console.log('💬 WhatsApp: +91 98765 43210');
-        console.log('✨ Features: Gold Particles | Testimonials | Tips Ticker | Animated Counters | Floating Buttons | Copy to Clipboard');
+        console.log('✨ Features: Gold Particles | Testimonials | Vastu Tips | GPay QR | Animated Counters | Floating Buttons');
+        console.log('📸 To add your photo: Uncomment the <img> tag in .profile-frame and replace src with your photo URL');
+        console.log('📱 To add GPay QR: Replace the placeholder in .gpay-qr with your QR code image');
     </script>
 
 </body>
