@@ -35,7 +35,7 @@
             --radius: 28px;
             --radius-sm: 14px;
             --radius-full: 60px;
-            --border-gold: 2px solid rgba(212, 175, 55, 0.40);
+            --border-gold: 1.5px solid rgba(212, 175, 55, 0.30);
             --border-gold-strong: 2px solid #d4af37;
         }
 
@@ -352,7 +352,7 @@
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
-            border: 1.5px solid rgba(212, 175, 55, 0.30);
+            border: var(--border-gold);
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(8px);
             color: var(--text-dark);
@@ -386,7 +386,7 @@
         }
 
         .section-title {
-            border: 1.5px solid rgba(212, 175, 55, 0.30);
+            border: var(--border-gold);
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(8px);
             padding: 6px 24px;
@@ -403,26 +403,37 @@
             margin-right: 8px;
         }
 
-        /* ─── 5 Elements Grid ─── */
+        /* ─── 5 Elements - ALWAYS IN ONE LINE ─── */
         .elements-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            display: flex;
+            flex-wrap: nowrap;
             gap: 10px;
             margin-top: 4px;
             position: relative;
             z-index: 1;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .elements-grid::-webkit-scrollbar {
+            display: none;
         }
 
         .element-btn {
+            flex: 1 1 0;
+            min-width: 0;
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(8px);
-            border: 1.5px solid rgba(212, 175, 55, 0.20);
+            border: var(--border-gold);
             border-radius: var(--radius-sm);
-            padding: 12px 6px 10px;
+            padding: 10px 4px 8px;
             text-align: center;
             cursor: pointer;
             transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
             box-shadow: var(--glass-shadow);
+            white-space: nowrap;
         }
 
         .element-btn:hover {
@@ -433,16 +444,16 @@
         }
 
         .element-btn .el-icon {
-            font-size: 26px;
+            font-size: 22px;
             display: block;
             margin-bottom: 2px;
         }
 
         .element-btn .el-name {
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 800;
             color: var(--text-dark);
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
             text-transform: uppercase;
             display: block;
         }
@@ -464,21 +475,21 @@
         }
 
         .element-btn .el-script {
-            font-size: 11px;
+            font-size: 9px;
             color: var(--text-light);
             font-weight: 400;
             display: block;
-            opacity: 0.5;
+            opacity: 0.4;
         }
 
         .element-btn .el-hint {
-            font-size: 7px;
+            font-size: 6px;
             color: var(--text-light);
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 2px;
+            letter-spacing: 0.3px;
+            margin-top: 1px;
             display: block;
-            opacity: 0.3;
+            opacity: 0.2;
         }
 
         /* ─── Services & Why ─── */
@@ -494,7 +505,7 @@
         .sub-card {
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(8px);
-            border: 1.5px solid rgba(212, 175, 55, 0.20);
+            border: var(--border-gold);
             border-radius: var(--radius-sm);
             padding: 14px 16px;
             transition: all 0.35s ease;
@@ -587,7 +598,7 @@
         .stat-btn {
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(8px);
-            border: 1.5px solid rgba(212, 175, 55, 0.20);
+            border: var(--border-gold);
             border-radius: var(--radius-sm);
             padding: 12px 6px;
             text-align: center;
@@ -636,7 +647,7 @@
             gap: 12px;
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(8px);
-            border: 1.5px solid rgba(212, 175, 55, 0.25);
+            border: var(--border-gold);
             border-radius: var(--radius-full);
             padding: 10px 24px;
             transition: all 0.4s ease;
@@ -713,7 +724,7 @@
         .qr-box {
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(8px);
-            border: 1.5px solid rgba(212, 175, 55, 0.20);
+            border: var(--border-gold);
             border-radius: var(--radius-sm);
             padding: 14px 12px 12px;
             display: flex;
@@ -733,7 +744,7 @@
         .qr-wrapper {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(4px);
-            border: 1.5px solid rgba(212, 175, 55, 0.30);
+            border: var(--border-gold);
             border-radius: 14px;
             padding: 10px;
             width: 100%;
@@ -798,7 +809,7 @@
             cursor: pointer;
             transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
             text-decoration: none;
-            border: 1.5px solid rgba(212, 175, 55, 0.25);
+            border: var(--border-gold);
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(8px);
             color: var(--text-dark);
@@ -814,7 +825,7 @@
 
         .cta-btn.primary {
             background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            color: var(--white);
+            color: #fff;
             border: none;
             box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
         }
@@ -837,7 +848,7 @@
         .location-btn {
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(8px);
-            border: 1.5px solid rgba(212, 175, 55, 0.20);
+            border: var(--border-gold);
             border-radius: var(--radius-full);
             padding: 10px 20px;
             display: inline-flex;
@@ -897,7 +908,7 @@
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(8px);
-            border: 1.5px solid rgba(212, 175, 55, 0.20);
+            border: var(--border-gold);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -921,7 +932,7 @@
         .footer {
             margin-top: 18px;
             padding-top: 14px;
-            border-top: 1.5px solid rgba(212, 175, 55, 0.10);
+            border-top: var(--border-gold);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -950,7 +961,7 @@
 
         .footer .version {
             font-size: 9px;
-            border: 1px solid rgba(212, 175, 55, 0.15);
+            border: var(--border-gold);
             padding: 2px 12px;
             border-radius: var(--radius-full);
             color: var(--text-light);
@@ -1090,7 +1101,7 @@
             margin-top: 12px;
             text-align: center;
             padding: 8px;
-            border: 1.5px solid rgba(212, 175, 55, 0.25);
+            border: var(--border-gold);
             border-radius: var(--radius-full);
             font-size: 14px;
             font-weight: 700;
@@ -1199,10 +1210,27 @@
                 font-size: 12px;
                 padding: 6px 14px;
             }
+
+            /* Elements - still in one line, smaller */
             .elements-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
+                gap: 6px;
             }
+            .element-btn {
+                padding: 8px 2px 6px;
+            }
+            .element-btn .el-icon {
+                font-size: 18px;
+            }
+            .element-btn .el-name {
+                font-size: 8px;
+            }
+            .element-btn .el-script {
+                font-size: 7px;
+            }
+            .element-btn .el-hint {
+                font-size: 5px;
+            }
+
             .sub-grid {
                 grid-template-columns: 1fr;
                 gap: 10px;
@@ -1256,15 +1284,6 @@
             .stat-btn .num {
                 font-size: 26px;
             }
-            .element-btn .el-icon {
-                font-size: 22px;
-            }
-            .element-btn .el-name {
-                font-size: 10px;
-            }
-            .element-btn .el-script {
-                font-size: 10px;
-            }
             .social-row {
                 gap: 8px;
             }
@@ -1288,7 +1307,7 @@
                 padding: 8px;
             }
             .glass-frame {
-                padding: 14px 12px 14px;
+                padding: 14px 10px 14px;
                 border-radius: 20px;
             }
             .glass-frame::before {
@@ -1314,10 +1333,29 @@
             .profile-frame .placeholder-icon {
                 font-size: 34px;
             }
+
+            /* Elements - super compact but still in one line */
             .elements-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 6px;
+                gap: 4px;
             }
+            .element-btn {
+                padding: 6px 2px 5px;
+                border-radius: 10px;
+            }
+            .element-btn .el-icon {
+                font-size: 14px;
+            }
+            .element-btn .el-name {
+                font-size: 7px;
+                letter-spacing: 0;
+            }
+            .element-btn .el-script {
+                font-size: 6px;
+            }
+            .element-btn .el-hint {
+                display: none;
+            }
+
             .stats-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 6px;
@@ -1380,18 +1418,6 @@
             .sub-card .item-btn {
                 font-size: 11px;
             }
-            .element-btn {
-                padding: 8px 4px 8px;
-            }
-            .element-btn .el-icon {
-                font-size: 18px;
-            }
-            .element-btn .el-name {
-                font-size: 9px;
-            }
-            .element-btn .el-script {
-                font-size: 9px;
-            }
             .footer {
                 font-size: 9px;
             }
@@ -1429,6 +1455,25 @@
             }
         }
 
+        @media (max-width: 360px) {
+            /* Extreme small screens - keep in one line with minimal text */
+            .element-btn .el-script {
+                display: none;
+            }
+            .element-btn .el-name {
+                font-size: 6px;
+            }
+            .element-btn .el-icon {
+                font-size: 12px;
+            }
+            .element-btn {
+                padding: 4px 1px 4px;
+            }
+            .elements-grid {
+                gap: 3px;
+            }
+        }
+
         @media (min-width: 821px) and (max-width: 1024px) {
             .hero-content h1 {
                 font-size: 42px;
@@ -1437,8 +1482,14 @@
                 width: 110px;
                 height: 110px;
             }
-            .elements-grid {
-                grid-template-columns: repeat(5, 1fr);
+            .element-btn .el-icon {
+                font-size: 20px;
+            }
+            .element-btn .el-name {
+                font-size: 9px;
+            }
+            .element-btn .el-script {
+                font-size: 8px;
             }
         }
 
@@ -1638,7 +1689,7 @@
                 </button>
             </div>
 
-            <!-- ─── 5 ELEMENTS ─── -->
+            <!-- ─── 5 ELEMENTS - ALWAYS IN ONE LINE ─── -->
             <div class="section-title-wrap">
                 <span class="section-title"><span class="icon">✦</span> The 5 Elements of Vastu</span>
             </div>
@@ -2225,7 +2276,7 @@
         console.log('📱 QR encodes:', window.location.href);
         console.log('📍 Location: PCMC, Wakad, Pune');
         console.log('💬 WhatsApp: +91 98765 43210');
-        console.log('✨ "Change the direction, change the situation."');
+        console.log('✨ 5 Elements now always in one line!');
     </script>
 
 </body>
