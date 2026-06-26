@@ -7,6 +7,7 @@
     <meta name="theme-color" content="#ffffff" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=yes" />
     <title>Raajesh Tank · Vastu Consultant</title>
     <meta name="description" content="Premium Vastu Consultant – Raajesh Tank. 15+ years experience, 500+ consultations." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,18 +16,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
     </script>
     <style>
-        /* ─── Reset & Base ─── */
-        *,
-        *::before,
-        *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* ─── FORCE LIGHT MODE ON ALL BROWSERS ─── */
+        /* ─── FORCE PURE WHITE ON ALL DEVICES ─── */
         html {
             background: #ffffff !important;
+            background-color: #ffffff !important;
             color-scheme: light !important;
             -webkit-color-scheme: light !important;
             scroll-behavior: smooth;
@@ -35,22 +28,35 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: #ffffff !important;
+            background-color: #ffffff !important;
             min-height: 100vh;
-            color: #1a0f08;
+            color: #1a0f08 !important;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
             padding: 20px;
+            padding-bottom: 100px;
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* ─── Override any dark mode preferences ─── */
+        /* ─── Override ANY dark mode attempt ─── */
         @media (prefers-color-scheme: dark) {
             html,
             body {
                 background: #ffffff !important;
+                background-color: #ffffff !important;
                 color-scheme: light !important;
+                -webkit-color-scheme: light !important;
             }
+        }
+
+        /* ─── CSS Reset ─── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         /* ─── Scrollbar ─── */
@@ -65,46 +71,16 @@
             border-radius: 10px;
         }
 
-        /* ─── Floating Orbs (soft gold, fully opaque background) ─── */
-        .orb {
+        /* ─── Gold Particles Canvas ─── */
+        #particles-canvas {
             position: fixed;
-            border-radius: 50%;
-            filter: blur(150px);
-            pointer-events: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: 0;
-        }
-        .orb-1 {
-            width: 500px;
-            height: 500px;
-            top: -200px;
-            right: -200px;
-            background: rgba(212, 175, 55, 0.06);
-            animation: orbFloat 28s ease-in-out infinite alternate;
-        }
-        .orb-2 {
-            width: 400px;
-            height: 400px;
-            bottom: -150px;
-            left: -150px;
-            background: rgba(212, 175, 55, 0.04);
-            animation: orbFloat 24s ease-in-out infinite alternate-reverse;
-        }
-        .orb-3 {
-            width: 300px;
-            height: 300px;
-            top: 40%;
-            right: 10%;
-            background: rgba(240, 208, 96, 0.03);
-            animation: orbFloat 20s ease-in-out infinite alternate;
-        }
-
-        @keyframes orbFloat {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-            100% {
-                transform: translate(-60px, 50px) scale(1.3);
-            }
+            pointer-events: none;
+            opacity: 0.4;
         }
 
         /* ─── Main Container ─── */
@@ -114,12 +90,13 @@
             max-width: 820px;
             width: 100%;
             margin: 0 auto;
-            background: transparent; /* allow orbs behind */
+            background: #ffffff !important;
         }
 
-        /* ─── Glass Frame Card (white with gold border) ─── */
+        /* ─── Gold Frame Card ─── */
         .glass-frame {
             background: #ffffff !important;
+            background-color: #ffffff !important;
             border: 2px solid #d4af37;
             border-radius: 28px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.50);
@@ -133,7 +110,7 @@
             box-shadow: 0 30px 80px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.60);
         }
 
-        /* ─── Gold glow border (only border, no background) ─── */
+        /* ─── Gold glow border ─── */
         .glass-frame::before {
             content: '';
             position: absolute;
@@ -148,6 +125,7 @@
             mask-composite: exclude;
             pointer-events: none;
             opacity: 0.7;
+            z-index: 0;
         }
 
         @keyframes goldBorderShine {
@@ -160,18 +138,8 @@
             }
         }
 
-        /* ─── Glass Reflection (transparent, no background) ─── */
         .glass-frame::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 50%;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.30) 0%, transparent 100%);
-            border-radius: 28px 28px 0 0;
-            pointer-events: none;
-            opacity: 0.5;
+            display: none;
         }
 
         /* ─── Glow Bar ─── */
@@ -220,7 +188,7 @@
             color: #b8922a;
             letter-spacing: 3px;
             text-transform: uppercase;
-            background: #ffffff;
+            background: #ffffff !important;
             padding: 4px 16px;
             border-radius: 60px;
             border: 1px solid rgba(212, 175, 55, 0.15);
@@ -299,7 +267,7 @@
             border-radius: 50%;
             object-fit: cover;
             display: block;
-            background: #ffffff;
+            background: #ffffff !important;
             border: 2px solid rgba(255, 255, 255, 0.40);
         }
 
@@ -307,7 +275,7 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background: #ffffff;
+            background: #ffffff !important;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -338,13 +306,13 @@
             transition: all 0.3s ease;
             text-decoration: none;
             border: 1.5px solid rgba(212, 175, 55, 0.30);
-            background: #ffffff;
+            background: #ffffff !important;
             color: #1a0f08;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
         }
 
         .action-btn:hover {
-            background: #fcf8f2;
+            background: #fcf8f2 !important;
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.06);
             border-color: #d4af37;
@@ -371,7 +339,7 @@
 
         .section-title {
             border: 1.5px solid rgba(212, 175, 55, 0.30);
-            background: #ffffff;
+            background: #ffffff !important;
             padding: 6px 24px;
             border-radius: 60px;
             font-size: 11px;
@@ -407,7 +375,7 @@
         .element-btn {
             flex: 1 1 0;
             min-width: 0;
-            background: #ffffff;
+            background: #ffffff !important;
             border: 1.5px solid rgba(212, 175, 55, 0.30);
             border-radius: 14px;
             padding: 10px 4px 8px;
@@ -421,7 +389,7 @@
         .element-btn:hover {
             transform: translateY(-4px) scale(1.03);
             box-shadow: 0 12px 35px rgba(212, 175, 55, 0.08);
-            background: #fcf8f2;
+            background: #fcf8f2 !important;
             border-color: #d4af37;
         }
 
@@ -485,7 +453,7 @@
         }
 
         .sub-card {
-            background: #ffffff;
+            background: #ffffff !important;
             border: 1.5px solid rgba(212, 175, 55, 0.30);
             border-radius: 14px;
             padding: 14px 16px;
@@ -496,7 +464,7 @@
         .sub-card:hover {
             transform: translateY(-2px);
             box-shadow: 0 12px 35px rgba(212, 175, 55, 0.06);
-            background: #fcf8f2;
+            background: #fcf8f2 !important;
             border-color: rgba(212, 175, 55, 0.30);
         }
 
@@ -522,7 +490,7 @@
             transition: all 0.25s ease;
             line-height: 1.3;
             border: none;
-            background: none;
+            background: none !important;
             width: 100%;
             text-align: left;
             font-family: 'Inter', sans-serif;
@@ -577,7 +545,7 @@
         }
 
         .stat-btn {
-            background: #ffffff;
+            background: #ffffff !important;
             border: 1.5px solid rgba(212, 175, 55, 0.30);
             border-radius: 14px;
             padding: 12px 6px;
@@ -585,12 +553,14 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            position: relative;
+            overflow: hidden;
         }
 
         .stat-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(212, 175, 55, 0.06);
-            background: #fcf8f2;
+            background: #fcf8f2 !important;
             border-color: #d4af37;
         }
 
@@ -612,6 +582,157 @@
             margin-top: 2px;
         }
 
+        .stat-btn .counter-suffix {
+            font-size: 22px;
+        }
+
+        /* ─── Testimonials Slider ─── */
+        .testimonials-section {
+            margin-top: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-slider {
+            position: relative;
+            overflow: hidden;
+            border-radius: 14px;
+            border: 1.5px solid rgba(212, 175, 55, 0.30);
+            background: #ffffff !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            padding: 20px 24px 16px;
+            min-height: 140px;
+        }
+
+        .testimonial-slide {
+            display: none;
+            animation: slideFade 0.6s ease;
+        }
+
+        .testimonial-slide.active {
+            display: block;
+        }
+
+        @keyframes slideFade {
+            0% {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .testimonial-slide .t-stars {
+            color: #d4af37;
+            font-size: 16px;
+            letter-spacing: 2px;
+            margin-bottom: 6px;
+        }
+
+        .testimonial-slide .t-text {
+            font-size: 14px;
+            color: #5a4a3a;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .testimonial-slide .t-author {
+            margin-top: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a0f08;
+        }
+
+        .testimonial-slide .t-author span {
+            font-weight: 400;
+            color: #8a7a6a;
+            font-size: 12px;
+        }
+
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .testimonial-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.20);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .testimonial-dot.active {
+            background: #d4af37;
+            transform: scale(1.2);
+        }
+
+        .testimonial-dot:hover {
+            background: #d4af37;
+        }
+
+        /* ─── Vastu Tips Ticker ─── */
+        .tips-section {
+            margin-top: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tips-ticker {
+            border: 1.5px solid rgba(212, 175, 55, 0.30);
+            border-radius: 14px;
+            background: #ffffff !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            padding: 14px 20px;
+            overflow: hidden;
+            position: relative;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .tips-ticker .tip-icon {
+            font-size: 22px;
+            margin-right: 14px;
+            flex-shrink: 0;
+        }
+
+        .tips-ticker .tip-content {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+            height: 28px;
+        }
+
+        .tips-ticker .tip-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            font-size: 14px;
+            color: #5a4a3a;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            line-height: 28px;
+        }
+
+        .tips-ticker .tip-slide.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .tips-ticker .tip-slide strong {
+            color: #b8922a;
+        }
+
         /* ─── Google Reviews Button ─── */
         .reviews-btn-wrap {
             display: flex;
@@ -625,7 +746,7 @@
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: #ffffff;
+            background: #ffffff !important;
             border: 1.5px solid rgba(212, 175, 55, 0.30);
             border-radius: 60px;
             padding: 10px 24px;
@@ -640,7 +761,7 @@
         .reviews-btn:hover {
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 12px 35px rgba(212, 175, 55, 0.06);
-            background: #fcf8f2;
+            background: #fcf8f2 !important;
             border-color: #d4af37;
         }
 
@@ -701,7 +822,7 @@
         }
 
         .qr-box {
-            background: #ffffff;
+            background: #ffffff !important;
             border: 1.5px solid rgba(212, 175, 55, 0.30);
             border-radius: 14px;
             padding: 14px 12px 12px;
@@ -715,12 +836,12 @@
 
         .qr-box:hover {
             box-shadow: 0 12px 35px rgba(212, 175, 55, 0.06);
-            background: #fcf8f2;
+            background: #fcf8f2 !important;
             border-color: rgba(212, 175, 55, 0.30);
         }
 
         .qr-wrapper {
-            background: #ffffff;
+            background: #ffffff !important;
             border: 1.5px solid rgba(212, 175, 55, 0.30);
             border-radius: 14px;
             padding: 10px;
@@ -787,7 +908,7 @@
             transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
             text-decoration: none;
             border: 1.5px solid rgba(212, 175, 55, 0.30);
-            background: #ffffff;
+            background: #ffffff !important;
             color: #1a0f08;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
         }
@@ -795,13 +916,13 @@
         .cta-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.06);
-            background: #fcf8f2;
+            background: #fcf8f2 !important;
             border-color: #d4af37;
         }
 
         .cta-btn.primary {
-            background: linear-gradient(135deg, #d4af37, #b8922a);
-            color: #ffffff;
+            background: linear-gradient(135deg, #d4af37, #b8922a) !important;
+            color: #ffffff !important;
             border: none;
             box-shadow: 0 4px 20px rgba(212, 175, 55, 0.15);
         }
@@ -809,7 +930,7 @@
         .cta-btn.primary:hover {
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 10px 35px rgba(212, 175, 55, 0.20);
-            background: linear-gradient(135deg, #f0d060, #d4af37);
+            background: linear-gradient(135deg, #f0d060, #d4af37) !important;
         }
 
         .cta-btn .icon {
@@ -822,7 +943,7 @@
 
         /* ─── Location Button ─── */
         .location-btn {
-            background: #ffffff;
+            background: #ffffff !important;
             border: 1.5px solid rgba(212, 175, 55, 0.30);
             border-radius: 60px;
             padding: 10px 20px;
@@ -845,7 +966,7 @@
         }
 
         .location-btn:hover {
-            background: #fcf8f2;
+            background: #fcf8f2 !important;
             transform: translateY(-2px);
             box-shadow: 0 12px 35px rgba(212, 175, 55, 0.06);
             border-color: #d4af37;
@@ -881,7 +1002,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: #ffffff;
+            background: #ffffff !important;
             border: 1.5px solid rgba(212, 175, 55, 0.30);
             display: flex;
             align-items: center;
@@ -895,7 +1016,7 @@
         }
 
         .social-link:hover {
-            background: #fcf8f2;
+            background: #fcf8f2 !important;
             color: #b8922a;
             transform: translateY(-4px) scale(1.05);
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.06);
@@ -940,7 +1061,163 @@
             border-radius: 60px;
             color: #8a7a6a;
             opacity: 0.5;
-            background: #ffffff;
+            background: #ffffff !important;
+        }
+
+        /* ─── Floating Action Buttons ─── */
+        .floating-actions {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .floating-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            border: 2px solid #d4af37;
+            background: #ffffff !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            text-decoration: none;
+            color: #1a0f08;
+            position: relative;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.20);
+            border-color: #f0d060;
+        }
+
+        .floating-btn .fb-tooltip {
+            position: absolute;
+            right: 68px;
+            background: #1a0f08;
+            color: #ffffff;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 500;
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(8px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .floating-btn:hover .fb-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .floating-btn .fb-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 20px;
+            height: 20px;
+            background: #d4af37;
+            color: #ffffff;
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-btn.whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E) !important;
+            color: #ffffff;
+            border-color: #25D366;
+        }
+
+        .floating-btn.whatsapp:hover {
+            border-color: #25D366;
+            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.30);
+        }
+
+        .floating-btn.call {
+            background: linear-gradient(135deg, #34B7F1, #1A8CD8) !important;
+            color: #ffffff;
+            border-color: #34B7F1;
+        }
+
+        .floating-btn.call:hover {
+            border-color: #34B7F1;
+            box-shadow: 0 12px 40px rgba(52, 183, 241, 0.30);
+        }
+
+        /* ─── Toast Notification ─── */
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: #1a0f08;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            z-index: 2000;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            pointer-events: none;
+            border: 1px solid rgba(212, 175, 55, 0.10);
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ─── Download Button ─── */
+        .download-btn-wrap {
+            display: flex;
+            justify-content: center;
+            margin-top: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 24px;
+            border-radius: 60px;
+            font-size: 13px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1.5px solid rgba(212, 175, 55, 0.30);
+            background: #ffffff !important;
+            color: #1a0f08;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.06);
+            background: #fcf8f2 !important;
+            border-color: #d4af37;
+        }
+
+        .download-btn .d-icon {
+            font-size: 18px;
         }
 
         /* ─── Modal ─── */
@@ -948,8 +1225,6 @@
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.40);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             z-index: 999;
             display: none;
             justify-content: center;
@@ -974,7 +1249,7 @@
         }
 
         .modal-box {
-            background: #ffffff;
+            background: #ffffff !important;
             border: 2px solid rgba(212, 175, 55, 0.25);
             border-radius: 32px;
             padding: 28px 24px 24px;
@@ -1080,11 +1355,11 @@
             color: #1a0f08;
             cursor: pointer;
             transition: 0.3s;
-            background: #ffffff;
+            background: #ffffff !important;
         }
 
         .modal-box .modal-phone:hover {
-            background: #fcf8f2;
+            background: #fcf8f2 !important;
             border-color: #d4af37;
         }
 
@@ -1136,6 +1411,7 @@
         @media (max-width: 820px) {
             body {
                 padding: 12px;
+                padding-bottom: 90px;
             }
             .glass-frame {
                 padding: 20px 16px 18px;
@@ -1143,9 +1419,6 @@
             }
             .glass-frame::before {
                 border-radius: calc(24px + 3px);
-            }
-            .glass-frame::after {
-                border-radius: 24px 24px 0 0;
             }
             .hero {
                 grid-template-columns: 1fr;
@@ -1270,11 +1543,41 @@
                 font-size: 13px;
                 padding: 8px 16px;
             }
+            .floating-actions {
+                bottom: 16px;
+                right: 16px;
+                gap: 10px;
+            }
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            .testimonial-slider {
+                padding: 16px 16px 12px;
+                min-height: 130px;
+            }
+            .tips-ticker {
+                padding: 12px 16px;
+                min-height: 50px;
+            }
+            .tips-ticker .tip-content {
+                height: 24px;
+            }
+            .tips-ticker .tip-slide {
+                font-size: 13px;
+                line-height: 24px;
+            }
+            .tips-ticker .tip-icon {
+                font-size: 18px;
+                margin-right: 10px;
+            }
         }
 
         @media (max-width: 480px) {
             body {
                 padding: 8px;
+                padding-bottom: 80px;
             }
             .glass-frame {
                 padding: 14px 10px 14px;
@@ -1282,9 +1585,6 @@
             }
             .glass-frame::before {
                 border-radius: calc(20px + 3px);
-            }
-            .glass-frame::after {
-                border-radius: 20px 20px 0 0;
             }
             .hero-content h1 {
                 font-size: 28px;
@@ -1422,6 +1722,45 @@
             .glow-bar {
                 margin-bottom: 14px;
             }
+            .floating-actions {
+                bottom: 12px;
+                right: 12px;
+                gap: 8px;
+            }
+            .floating-btn {
+                width: 44px;
+                height: 44px;
+                font-size: 18px;
+            }
+            .floating-btn .fb-tooltip {
+                display: none;
+            }
+            .testimonial-slider {
+                padding: 12px 14px 10px;
+                min-height: 110px;
+            }
+            .testimonial-slide .t-text {
+                font-size: 13px;
+            }
+            .tips-ticker {
+                padding: 10px 14px;
+                min-height: 44px;
+            }
+            .tips-ticker .tip-content {
+                height: 20px;
+            }
+            .tips-ticker .tip-slide {
+                font-size: 12px;
+                line-height: 20px;
+            }
+            .tips-ticker .tip-icon {
+                font-size: 16px;
+                margin-right: 8px;
+            }
+            .download-btn {
+                font-size: 12px;
+                padding: 8px 18px;
+            }
         }
 
         @media (max-width: 360px) {
@@ -1466,6 +1805,7 @@
             body {
                 background: #fff;
                 padding: 0;
+                padding-bottom: 0;
             }
             .glass-frame {
                 background: #fff !important;
@@ -1477,7 +1817,10 @@
             .glass-frame::before,
             .glass-frame::after,
             .glow-bar,
-            .orb {
+            .orb,
+            #particles-canvas,
+            .floating-actions,
+            .toast {
                 display: none !important;
             }
             .hero-content h1,
@@ -1500,7 +1843,8 @@
             .qr-box,
             .reviews-btn,
             .location-btn,
-            .social-link {
+            .social-link,
+            .download-btn {
                 background: #f8f8f8 !important;
                 border-color: #d4af37 !important;
                 box-shadow: none !important;
@@ -1606,15 +1950,45 @@
                 transform: none !important;
                 box-shadow: none !important;
             }
+            .testimonial-slider,
+            .tips-ticker {
+                border-color: #d4af37 !important;
+                background: #f8f8f8 !important;
+            }
+            .testimonial-slide .t-text {
+                color: #333 !important;
+            }
+            .testimonial-slide .t-author {
+                color: #000 !important;
+            }
+            .tips-ticker .tip-slide {
+                color: #333 !important;
+            }
+            .tips-ticker .tip-slide strong {
+                color: #b8922a !important;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ─── Floating Orbs ─── -->
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
+    <!-- ─── Gold Particles Canvas ─── -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ─── Floating Action Buttons ─── -->
+    <div class="floating-actions">
+        <a class="floating-btn whatsapp" onclick="openWhatsApp()" href="javascript:void(0)">
+            <span>💬</span>
+            <span class="fb-tooltip">WhatsApp</span>
+        </a>
+        <a class="floating-btn call" onclick="callPhone()" href="javascript:void(0)">
+            <span>📞</span>
+            <span class="fb-tooltip">Call Now</span>
+        </a>
+    </div>
+
+    <!-- ─── Toast Notification ─── -->
+    <div class="toast" id="toast"></div>
 
     <!-- ─── Main Container ─── -->
     <div class="main-container">
@@ -1648,9 +2022,13 @@
                     <span class="a-icon">💬</span>
                     <span>WhatsApp <span class="a-label">| Chat</span></span>
                 </button>
-                <button class="action-btn" onclick="openEmail()">
+                <button class="action-btn" onclick="copyEmail()">
                     <span class="a-icon">✉️</span>
                     <span>Email <span class="a-label">| raajesh@vastu.com</span></span>
+                </button>
+                <button class="action-btn" onclick="copyPhone()">
+                    <span class="a-icon">📋</span>
+                    <span>Copy <span class="a-label">| Phone</span></span>
                 </button>
             </div>
 
@@ -1773,24 +2151,70 @@
                 </div>
             </div>
 
-            <!-- ─── STATS ─── -->
-            <div class="stats-grid">
+            <!-- ─── STATS WITH ANIMATED COUNTERS ─── -->
+            <div class="stats-grid" id="statsGrid">
                 <button class="stat-btn" onclick="showStat('500+ Consultations')">
-                    <span class="num">500+</span>
+                    <span class="num"><span class="counter" data-target="500">0</span>+</span>
                     <span class="lbl">Consultations</span>
                 </button>
                 <button class="stat-btn" onclick="showStat('200+ Happy Clients')">
-                    <span class="num">200+</span>
+                    <span class="num"><span class="counter" data-target="200">0</span>+</span>
                     <span class="lbl">Happy Clients</span>
                 </button>
                 <button class="stat-btn" onclick="showStat('15+ Years Experience')">
-                    <span class="num">15+</span>
+                    <span class="num"><span class="counter" data-target="15">0</span>+</span>
                     <span class="lbl">Years Experience</span>
                 </button>
                 <button class="stat-btn" onclick="showStat('100% Satisfaction')">
-                    <span class="num">100%</span>
+                    <span class="num"><span class="counter" data-target="100">0</span>%</span>
                     <span class="lbl">Satisfaction</span>
                 </button>
+            </div>
+
+            <!-- ─── TESTIMONIALS SLIDER ─── -->
+            <div class="testimonials-section">
+                <div class="section-title-wrap" style="margin-bottom:10px;">
+                    <span class="section-title"><span class="icon">⭐</span> Client Testimonials</span>
+                </div>
+                <div class="testimonial-slider" id="testimonialSlider">
+                    <div class="testimonial-slide active">
+                        <div class="t-stars">★★★★★</div>
+                        <div class="t-text">"Raajesh sir ने हमारे घर की Vastu दोष को ठीक किया, अब घर में सकारात्मक ऊर्जा है। उनकी सलाह बहुत सटीक और व्यावहारिक है।"</div>
+                        <div class="t-author">संजय पाटिल <span>· पुणे</span></div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="t-stars">★★★★★</div>
+                        <div class="t-text">"बहुत ही सटीक और विस्तृत Vastu सलाह। उनके सुझावों से हमारे कारोबार में उल्लेखनीय सुधार हुआ है। बहुत अनुभवी और ज्ञानी व्यक्ति।"</div>
+                        <div class="t-author">प्रिया मेहता <span>· मुंबई</span></div>
+                    </div>
+                    <div class="testimonial-slide">
+                        <div class="t-stars">★★★★★</div>
+                        <div class="t-text">"Vastu expert होने के साथ-साथ बहुत अच्छे इंसान भी हैं। उनकी सलाह ने हमारे जीवन में सकारात्मक बदलाव लाया। पूरी तरह से संतुष्ट हूँ।"</div>
+                        <div class="t-author">अमित शर्मा <span>· सूरत</span></div>
+                    </div>
+                    <div class="testimonial-dots" id="testimonialDots">
+                        <button class="testimonial-dot active" data-index="0"></button>
+                        <button class="testimonial-dot" data-index="1"></button>
+                        <button class="testimonial-dot" data-index="2"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ─── VASTU TIPS TICKER ─── -->
+            <div class="tips-section">
+                <div class="section-title-wrap" style="margin-bottom:10px;">
+                    <span class="section-title"><span class="icon">💡</span> Vastu Quick Tips</span>
+                </div>
+                <div class="tips-ticker" id="tipsTicker">
+                    <span class="tip-icon">✨</span>
+                    <div class="tip-content">
+                        <div class="tip-slide active"><strong>North-East</strong> is the direction of water — keep it clean and open for prosperity.</div>
+                        <div class="tip-slide"><strong>South-East</strong> is the fire zone — place your kitchen here for good health.</div>
+                        <div class="tip-slide"><strong>North-West</strong> is the air zone — ideal for guests and communication.</div>
+                        <div class="tip-slide"><strong>South-West</strong> is the earth zone — perfect for the master bedroom for stability.</div>
+                        <div class="tip-slide"><strong>Center</strong> (Brahmasthan) should be kept open and clutter-free for positive energy.</div>
+                    </div>
+                </div>
             </div>
 
             <!-- ─── GOOGLE REVIEWS ─── -->
@@ -1830,6 +2254,14 @@
                 </div>
             </div>
 
+            <!-- ─── DOWNLOAD CARD ─── -->
+            <div class="download-btn-wrap">
+                <button class="download-btn" onclick="downloadCard()">
+                    <span class="d-icon">⬇️</span>
+                    Download vCard (.vcf)
+                </button>
+            </div>
+
             <!-- ─── LOCATION BUTTON ─── -->
             <button class="location-btn" onclick="openLocation()">
                 <span class="loc-icon">📍</span>
@@ -1851,7 +2283,7 @@
             <div class="footer">
                 <span>© 2026 <span class="brand">RAAJESH <span>TANK</span></span> — All Rights Reserved</span>
                 <span class="tag">✦ Vastu Correct, Life Perfect ✦</span>
-                <span class="version">vCard v6.0</span>
+                <span class="version">vCard v7.0</span>
             </div>
 
         </div>
@@ -2150,6 +2582,56 @@
             }
         }
 
+        // ─── Copy Phone ───
+        function copyPhone() {
+            const phone = '+919876543210';
+            copyToClipboard(phone, '📞 Phone number copied!');
+        }
+
+        // ─── Copy Email ───
+        function copyEmail() {
+            const email = 'raajesh@vastu.com';
+            copyToClipboard(email, '✉️ Email address copied!');
+        }
+
+        // ─── Copy to Clipboard with Toast ───
+        function copyToClipboard(text, message) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showToast(message);
+                }).catch(() => {
+                    fallbackCopy(text, message);
+                });
+            } else {
+                fallbackCopy(text, message);
+            }
+        }
+
+        function fallbackCopy(text, message) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            try {
+                document.execCommand('copy');
+                showToast(message);
+            } catch (e) {
+                showToast('❌ Failed to copy');
+            }
+            document.body.removeChild(textarea);
+        }
+
+        // ─── Toast Notification ───
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }
+
         // ─── WhatsApp ───
         function openWhatsApp() {
             const phone = '919876543210';
@@ -2176,7 +2658,7 @@
                 '📊 Get Vastu Report\n\nWe provide detailed Vastu reports with actionable insights.\n\n📞 Call: +91 98765 43210\n💬 WhatsApp: Click "Book Consultation" to request a report.');
         }
 
-        // ─── Save Contact ───
+        // ─── Save Contact (vCard) ───
         function saveContact() {
             const vcard =
                 `BEGIN:VCARD\nVERSION:3.0\nFN:Raajesh Tank\nN:Tank;Raajesh;;;\nORG:Vastu Consultant\nTEL;TYPE=CELL:+919876543210\nEMAIL:raajesh@vastu.com\nADR;TYPE=WORK:;;PCMC Wakad;Pune;Maharashtra;411057;India\nNOTE:Vastu Consultant - "Change the direction, change the situation."\nEND:VCARD`;
@@ -2189,6 +2671,12 @@
             a.click();
             document.body.removeChild(a);
             URL.revokeObjectURL(url);
+            showToast('📇 vCard saved successfully!');
+        }
+
+        // ─── Download Card ───
+        function downloadCard() {
+            saveContact();
         }
 
         // ─── Share ───
@@ -2197,10 +2685,10 @@
                 `🕉️ Raajesh Tank — Vastu Consultant\n"Change the direction, change the situation."\n📞 +91 98765 43210\n📍 PCMC, Wakad, Pune\n💬 Book Consultation: https://wa.me/919876543210\n\n${window.location.href}`;
             if (navigator.share) {
                 navigator.share({ title: 'Raajesh Tank · Vastu Consultant', text: msg, url: window.location.href })
-                .catch(() => {});
+                    .catch(() => {});
             } else if (navigator.clipboard) {
                 navigator.clipboard.writeText(msg).then(() => {
-                    alert('📤 Card details copied to clipboard! Share it anywhere.');
+                    showToast('📤 Card details copied to clipboard!');
                 }).catch(() => {
                     prompt('📤 Copy this text to share:', msg);
                 });
@@ -2236,12 +2724,160 @@
             }
         }
 
+        // ─── Testimonials Slider ───
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.testimonial-dot');
+            slides.forEach((s, i) => {
+                s.classList.toggle('active', i === index);
+            });
+            dots.forEach((d, i) => {
+                d.classList.toggle('active', i === index);
+            });
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            showSlide((currentSlide + 1) % slides.length);
+        }
+
+        document.querySelectorAll('.testimonial-dot').forEach(dot => {
+            dot.addEventListener('click', function() {
+                const index = parseInt(this.dataset.index);
+                showSlide(index);
+                resetSlideInterval();
+            });
+        });
+
+        function resetSlideInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // ─── Tips Ticker ───
+        let tipIndex = 0;
+        let tipInterval;
+
+        function nextTip() {
+            const tips = document.querySelectorAll('.tip-slide');
+            tips.forEach((t, i) => {
+                t.classList.toggle('active', i === tipIndex);
+            });
+            tipIndex = (tipIndex + 1) % tips.length;
+        }
+
+        // ─── Animated Counters ───
+        let countersAnimated = false;
+
+        function animateCounters() {
+            if (countersAnimated) return;
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.dataset.target);
+                const duration = 2000;
+                const step = Math.max(1, Math.floor(target / 60));
+                let current = 0;
+                const increment = () => {
+                    current += step;
+                    if (current >= target) {
+                        counter.textContent = target;
+                        return;
+                    }
+                    counter.textContent = current;
+                    requestAnimationFrame(() => setTimeout(increment, 30));
+                };
+                increment();
+            });
+            countersAnimated = true;
+        }
+
+        // ─── Intersection Observer for Counters ───
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        const statsGrid = document.getElementById('statsGrid');
+        if (statsGrid) {
+            observer.observe(statsGrid);
+        }
+
+        // ─── Gold Particles ───
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = (Math.random() - 0.5) * 0.3;
+                this.speedY = (Math.random() - 0.5) * 0.3;
+                this.opacity = Math.random() * 0.3 + 0.1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        function initParticles(count = 40) {
+            for (let i = 0; i < count; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            animationId = requestAnimationFrame(animateParticles);
+        }
+
+        initParticles(40);
+        animateParticles();
+
+        // ─── Start Sliders ───
+        setTimeout(() => {
+            slideInterval = setInterval(nextSlide, 5000);
+            tipInterval = setInterval(nextTip, 4000);
+            nextTip();
+        }, 1000);
+
         // ─── Console ───
-        console.log('🕉️ Raajesh Tank · Vastu Consultant — Premium Glass vCard v6.0');
+        console.log('🕉️ Raajesh Tank · Vastu Consultant — Premium vCard v7.0');
         console.log('📱 QR encodes:', window.location.href);
         console.log('📍 Location: PCMC, Wakad, Pune');
         console.log('💬 WhatsApp: +91 98765 43210');
-        console.log('✨ 5 Elements now always in one line!');
+        console.log('✨ Features: Gold Particles | Testimonials | Tips Ticker | Animated Counters | Floating Buttons | Copy to Clipboard');
     </script>
 
 </body>
