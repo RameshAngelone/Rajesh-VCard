@@ -13,8 +13,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
-    </script>
     <style>
         /* ─── FORCE OFF-WHITE/CREAM ON ALL DEVICES ─── */
         html {
@@ -841,8 +839,8 @@
         }
 
         .gpay-box .gpay-qr {
-            width: 80px;
-            height: 80px;
+            width: 120px;
+            height: 120px;
             border-radius: 12px;
             border: 2px solid #d4af37;
             background: #ffffff;
@@ -852,17 +850,19 @@
             overflow: hidden;
             flex-shrink: 0;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
         }
 
         .gpay-box .gpay-qr img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            display: block;
         }
 
         .gpay-box .gpay-qr:hover {
             transform: scale(1.04);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.08);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.10);
         }
 
         .gpay-box .gpay-upi {
@@ -991,11 +991,11 @@
 
         .qr-wrapper {
             background: #ffffff !important;
-            border: 1.5px solid rgba(212, 175, 55, 0.30);
+            border: 2px solid #d4af37;
             border-radius: 14px;
             padding: 10px;
             width: 100%;
-            max-width: 130px;
+            max-width: 160px;
             aspect-ratio: 1/1;
             display: flex;
             justify-content: center;
@@ -1009,29 +1009,22 @@
             box-shadow: 0 8px 30px rgba(212, 175, 55, 0.08);
         }
 
-        #qrcode {
+        .qr-wrapper img {
             width: 100%;
             height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #qrcode img,
-        #qrcode canvas {
-            width: 100% !important;
-            height: 100% !important;
+            object-fit: contain;
             display: block;
-            border-radius: 6px;
+            border-radius: 4px;
         }
 
         .qr-label {
-            font-size: 9px;
-            font-weight: 600;
-            color: #8a7a6a;
-            letter-spacing: 2.5px;
+            font-size: 11px;
+            font-weight: 700;
+            color: #b8922a;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin-top: 6px;
+            margin-top: 8px;
+            text-align: center;
         }
 
         .cta-stack {
@@ -1661,7 +1654,7 @@
                 gap: 12px;
             }
             .qr-wrapper {
-                max-width: 110px;
+                max-width: 130px;
             }
             .reviews-btn {
                 padding: 8px 16px;
@@ -1751,11 +1744,8 @@
                 gap: 14px;
             }
             .gpay-box .gpay-qr {
-                width: 70px;
-                height: 70px;
-            }
-            .gpay-box .gpay-label .gpay-title {
-                font-size: 13px;
+                width: 100px;
+                height: 100px;
             }
             .website-btn {
                 font-size: 11px;
@@ -1863,7 +1853,7 @@
                 font-size: 14px;
             }
             .qr-wrapper {
-                max-width: 80px;
+                max-width: 100px;
                 padding: 6px;
             }
             .section-title {
@@ -1962,14 +1952,8 @@
                 align-items: center;
             }
             .gpay-box .gpay-qr {
-                width: 80px;
-                height: 80px;
-            }
-            .gpay-box .gpay-label .gpay-title {
-                font-size: 13px;
-            }
-            .gpay-box .gpay-label .gpay-sub {
-                font-size: 10px;
+                width: 90px;
+                height: 90px;
             }
             .website-btn {
                 font-size: 10px;
@@ -1996,6 +1980,13 @@
             .elements-grid {
                 gap: 3px;
             }
+            .gpay-box .gpay-qr {
+                width: 80px;
+                height: 80px;
+            }
+            .qr-wrapper {
+                max-width: 80px;
+            }
         }
 
         @media (min-width: 821px) and (max-width: 1024px) {
@@ -2014,6 +2005,10 @@
             }
             .element-btn .el-script {
                 font-size: 8px;
+            }
+            .gpay-box .gpay-qr {
+                width: 110px;
+                height: 110px;
             }
         }
 
@@ -2946,9 +2941,6 @@
             }
         };
 
-        // ─── QR Code ───
-        // QR is now static image, no need for QRCode library
-
         // ─── Element Show ───
         function showElement(key) {
             const d = elementData[key];
@@ -3284,7 +3276,6 @@
 
         // ─── Console ───
         console.log('🕉️ VASTULAKSITAH · Vastu Consultant — Premium vCard v9.0');
-        console.log('📱 QR encodes:', window.location.href);
         console.log('📍 Location: PCMC, Wakad, Pune');
         console.log('💬 WhatsApp: +91 8793008108');
         console.log('🌐 Website: www.vastulaksitah.com');
