@@ -458,17 +458,6 @@
             opacity: 0.6;
         }
 
-        .profile-frame .gold-ring .ring-icon {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 18px;
-            color: #d4af37;
-            opacity: 0.5;
-            animation: none;
-        }
-
         @keyframes spinRing {
             0% {
                 transform: rotate(0deg);
@@ -1335,12 +1324,13 @@
             font-size: 18px;
         }
 
+        /* ─── LOCATION BUTTON WITH FULL ADDRESS ─── */
         .location-btn {
             background: #ffffff !important;
             border: 1.5px solid rgba(212, 175, 55, 0.30);
-            border-radius: 60px;
-            padding: 10px 20px;
-            display: inline-flex;
+            border-radius: 16px;
+            padding: 14px 20px;
+            display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
@@ -1350,12 +1340,14 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
             width: 100%;
             font-family: 'Inter', sans-serif;
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 13px;
+            font-weight: 500;
             color: #1a0f08;
             margin-top: 4px;
             position: relative;
             z-index: 1;
+            text-align: center;
+            line-height: 1.5;
         }
 
         .location-btn:hover {
@@ -1366,16 +1358,33 @@
         }
 
         .location-btn .loc-icon {
-            font-size: 18px;
+            font-size: 20px;
+            flex-shrink: 0;
         }
+
+        .location-btn .loc-text {
+            font-size: 13px;
+            font-weight: 500;
+            color: #1a0f08;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .location-btn .loc-arrow {
+            font-size: 16px;
+            color: #b8922a;
+            flex-shrink: 0;
+            margin-left: auto;
+        }
+
         .location-btn .loc-sub {
-            font-size: 11px;
+            font-size: 10px;
             color: #8a7a6a;
             font-weight: 400;
-        }
-        .location-btn .loc-arrow {
-            font-size: 14px;
-            color: #b8922a;
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 2px;
         }
 
         /* ─── Social Row - REMOVED ─── */
@@ -1884,8 +1893,15 @@
                 padding: 9px 14px;
             }
             .location-btn {
-                font-size: 13px;
-                padding: 8px 16px;
+                font-size: 12px;
+                padding: 12px 16px;
+                border-radius: 14px;
+            }
+            .location-btn .loc-text {
+                font-size: 12px;
+            }
+            .location-btn .loc-sub {
+                font-size: 9px;
             }
             .floating-actions {
                 bottom: 16px;
@@ -2080,12 +2096,21 @@
                 font-size: 9px;
             }
             .location-btn {
-                font-size: 12px;
-                padding: 6px 12px;
-                gap: 8px;
+                font-size: 11px;
+                padding: 10px 14px;
+                border-radius: 12px;
+                flex-direction: column;
+                text-align: center;
+            }
+            .location-btn .loc-text {
+                font-size: 11px;
+                min-width: unset;
             }
             .location-btn .loc-sub {
-                font-size: 10px;
+                font-size: 9px;
+            }
+            .location-btn .loc-arrow {
+                margin-left: 0;
             }
             .modal-box {
                 padding: 16px 14px 14px;
@@ -2224,6 +2249,13 @@
             }
             .action-btn .a-text {
                 font-size: 8px;
+            }
+            .location-btn {
+                font-size: 10px;
+                padding: 8px 12px;
+            }
+            .location-btn .loc-text {
+                font-size: 10px;
             }
         }
 
@@ -2846,12 +2878,15 @@
                 </button>
             </div>
 
-            <!-- ─── LOCATION ─── -->
+            <!-- ─── LOCATION WITH FULL ADDRESS & GOOGLE MAPS COORDINATES ─── -->
             <button class="location-btn" onclick="openLocation()">
                 <span class="loc-icon">📍</span>
-                <span class="loc-text">PCMC, Wakad, Pune</span>
-                <span class="loc-sub">· Serving PAN India</span>
+                <span class="loc-text">
+                    S. no. 25, Office no. D-12, SILVER SPACE "A" Wing, Vishal Nagar,<br>
+                    Pune – Wakad Road, Jagtap Dairy, Pimple Nilakh, Pune 411027
+                </span>
                 <span class="loc-arrow">→</span>
+                <span class="loc-sub">📍 18.5877818, 73.7827437 · Get Directions</span>
             </button>
 
             <!-- ─── SOCIAL ROW - REMOVED ─── -->
@@ -3331,7 +3366,7 @@
 
         function saveContact() {
             const vcard =
-                `BEGIN:VCARD\nVERSION:3.0\nFN:VASTULAKSITAH\nORG:Vastu Consultant\nTEL;TYPE=CELL:+918793008108\nEMAIL:vastushakkti@gmail.com\nEMAIL:rajeshtank108@gmail.com\nADR;TYPE=WORK:;;PCMC Wakad;Pune;Maharashtra;411057;India\nNOTE:Vastu Consultant - "Change the direction, Change the Situation."\nURL:https://www.vastulaksitah.com\nEND:VCARD`;
+                `BEGIN:VCARD\nVERSION:3.0\nFN:VASTULAKSITAH\nORG:Vastu Consultant\nTEL;TYPE=CELL:+918793008108\nEMAIL:vastushakkti@gmail.com\nEMAIL:rajeshtank108@gmail.com\nADR;TYPE=WORK:;;S.no.25 Office D-12 SILVER SPACE A Wing Vishal Nagar Pune-Wakad Road Jagtap Dairy Pimple Nilakh Pune 411027;Pune;Maharashtra;411027;India\nNOTE:Vastu Consultant - "Change the direction, Change the Situation."\nURL:https://www.vastulaksitah.com\nEND:VCARD`;
             const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -3350,7 +3385,7 @@
 
         function shareCard() {
             const msg =
-                `🕉️ VASTULAKSITAH — Vastu Consultant\n"Change the direction, Change the Situation."\n📞 +91 8793008108\n📍 PCMC, Wakad, Pune\n💬 Book Consultation: https://wa.me/918793008108\n🌐 www.vastulaksitah.com\n\n${window.location.href}`;
+                `🕉️ VASTULAKSITAH — Vastu Consultant\n"Change the direction, Change the Situation."\n📞 +91 8793008108\n📍 S.no.25, Office D-12, SILVER SPACE "A" Wing, Vishal Nagar, Pune-Wakad Road, Jagtap Dairy, Pimple Nilakh, Pune 411027\n💬 Book Consultation: https://wa.me/918793008108\n🌐 www.vastulaksitah.com\n\n${window.location.href}`;
             if (navigator.share) {
                 navigator.share({ title: 'VASTULAKSITAH · Vastu Consultant', text: msg, url: window.location.href })
                     .catch(() => {});
@@ -3365,8 +3400,11 @@
             }
         }
 
+        // ─── Location with Google Maps Coordinates ───
         function openLocation() {
-            const url = 'https://maps.google.com/maps?q=PCMC+Wakad+Pune';
+            const lat = '18.5877818';
+            const lng = '73.7827437';
+            const url = `https://www.google.com/maps?q=${lat},${lng}`;
             window.open(url, '_blank');
         }
 
@@ -3516,14 +3554,14 @@
         }, 1000);
 
         console.log('🕉️ VASTULAKSITAH · Vastu Consultant — Premium vCard v11.0');
-        console.log('📍 Location: PCMC, Wakad, Pune');
+        console.log('📍 Location: S.no.25, Office D-12, SILVER SPACE "A" Wing, Vishal Nagar, Pune-Wakad Road, Jagtap Dairy, Pimple Nilakh, Pune 411027');
+        console.log('🗺️ Google Maps Coordinates: 18.5877818, 73.7827437');
         console.log('💬 WhatsApp: +91 8793008108');
         console.log('🌐 Website: www.vastulaksitah.com');
         console.log('📧 Email: vastushakkti@gmail.com, rajeshtank108@gmail.com');
         console.log('📱 GPay QR: gpayqrcode.jpeg | V-Card QR: Vcardqrcode.png');
         console.log('💳 UPI: rajeshtank108@okicici');
         console.log('🧭 Rotating gold compass ring around profile image restored!');
-        console.log('📧 Email button opens Gmail directly!');
         console.log('📱 Call, WhatsApp, Email, Website in single line!');
     </script>
 
