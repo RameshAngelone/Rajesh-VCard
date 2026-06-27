@@ -289,27 +289,105 @@
             color: #b8922a;
         }
 
-        .profile-frame .gold-ring {
+        /* ─── Vedic Compass Ring Animation ─── */
+        .profile-frame .compass-ring {
             position: absolute;
-            inset: -6px;
+            inset: -10px;
             border-radius: 20px;
-            padding: 3px;
-            background: conic-gradient(from 0deg, transparent, #d4af37, transparent, #f0d060, transparent);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
             pointer-events: none;
-            animation: spinRing 8s linear infinite;
-            opacity: 0.6;
+            animation: spinCompass 12s linear infinite;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        @keyframes spinRing {
+        .profile-frame .compass-ring .compass-icon {
+            font-size: 28px;
+            color: #d4af37;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.20);
+            opacity: 0.7;
+            animation: compassPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes spinCompass {
             0% {
                 transform: rotate(0deg);
             }
             100% {
                 transform: rotate(360deg);
             }
+        }
+
+        @keyframes compassPulse {
+            0%,
+            100% {
+                opacity: 0.5;
+                transform: scale(0.9) rotate(0deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.1) rotate(180deg);
+            }
+        }
+
+        /* ─── Compass dots around the frame ─── */
+        .profile-frame .compass-dots {
+            position: absolute;
+            inset: -14px;
+            border-radius: 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .profile-frame .compass-dots .dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #d4af37;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .profile-frame .compass-dots .dot:nth-child(1) {
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .profile-frame .compass-dots .dot:nth-child(2) {
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .profile-frame .compass-dots .dot:nth-child(3) {
+            left: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .profile-frame .compass-dots .dot:nth-child(4) {
+            right: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .profile-frame .compass-dots .dot:nth-child(5) {
+            top: 15%;
+            right: -2px;
+            transform: translateX(50%);
+        }
+        .profile-frame .compass-dots .dot:nth-child(6) {
+            bottom: 15%;
+            right: -2px;
+            transform: translateX(50%);
+        }
+        .profile-frame .compass-dots .dot:nth-child(7) {
+            top: 15%;
+            left: -2px;
+            transform: translateX(-50%);
+        }
+        .profile-frame .compass-dots .dot:nth-child(8) {
+            bottom: 15%;
+            left: -2px;
+            transform: translateX(-50%);
         }
 
         .profile-info {
@@ -1777,6 +1855,9 @@
                 font-size: 13px;
                 padding: 8px 18px;
             }
+            .profile-frame .compass-ring .compass-icon {
+                font-size: 22px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1996,6 +2077,13 @@
             .gpay-pay-btn .gp-icon {
                 font-size: 17px;
             }
+            .profile-frame .compass-ring .compass-icon {
+                font-size: 18px;
+            }
+            .profile-frame .compass-dots .dot {
+                width: 3px;
+                height: 3px;
+            }
         }
 
         @media (max-width: 360px) {
@@ -2169,7 +2257,10 @@
             .profile-frame img {
                 border-radius: 8px !important;
             }
-            .profile-frame .gold-ring {
+            .profile-frame .compass-ring {
+                display: none !important;
+            }
+            .profile-frame .compass-dots {
                 display: none !important;
             }
             .action-btn {
@@ -2275,7 +2366,23 @@
                 <div class="profile-wrapper">
                     <div class="profile-frame">
                         <img src="rajesh.png" alt="Raajesh Tank">
-                        <div class="gold-ring"></div>
+
+                        <!-- Vedic Compass Ring -->
+                        <div class="compass-ring">
+                            <span class="compass-icon">🧭</span>
+                        </div>
+
+                        <!-- Compass Direction Dots -->
+                        <div class="compass-dots">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
                     </div>
                     <div class="profile-info">
                         <div class="profile-name">Raajesh Tank</div>
@@ -2637,7 +2744,7 @@
             <div class="footer">
                 <span>© 2026 Ramesh Chotalia — All Rights Reserved</span>
                 <span class="tag">✦ Vastu Correct, Life Perfect ✦</span>
-                <span class="version">vCard v9.0</span>
+                <span class="version">vCard v10.0</span>
             </div>
 
         </div>
@@ -3034,20 +3141,17 @@
 
         // ─── Copy UPI ───
         function copyUpi() {
-            const upi = 'vastulaksitah@upi';
-            copyToClipboard(upi, '📱 UPI ID copied: vastulaksitah@upi');
+            const upi = 'rajeshtank108@okicici';
+            copyToClipboard(upi, '📱 UPI ID copied: rajeshtank108@okicici');
         }
 
         // ─── Pay with Google Pay ───
         function payWithGooglePay() {
             const upi = 'rajeshtank108@okicici';
             const name = 'RAAJESH TANK';
-            const amount = '0'; // User can enter amount
-            // Open UPI payment app
+            const amount = '0';
             const upiUrl = `upi://pay?pa=${upi}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
-            // Try to open UPI app
             window.location.href = upiUrl;
-            // Also copy UPI ID as fallback
             setTimeout(() => {
                 copyToClipboard(upi, '📱 UPI ID copied! Open GPay/PhonePe to pay.');
             }, 500);
@@ -3310,13 +3414,14 @@
             nextTip();
         }, 1000);
 
-        console.log('🕉️ VASTULAKSITAH · Vastu Consultant — Premium vCard v9.0');
+        console.log('🕉️ VASTULAKSITAH · Vastu Consultant — Premium vCard v10.0');
         console.log('📍 Location: PCMC, Wakad, Pune');
         console.log('💬 WhatsApp: +91 8793008108');
         console.log('🌐 Website: www.vastulaksitah.com');
         console.log('📧 Emails: vastushakkti@gmail.com, rajeshtank108@gmail.com');
         console.log('📱 GPay QR: gpayqrcode.jpeg | V-Card QR: Vcardqrcode.png');
-        console.log('💳 "Pay with Google Pay" button added!');
+        console.log('💳 UPI: rajeshtank108@okicici');
+        console.log('🧭 Vedic Compass rotating around profile image!');
     </script>
 
 </body>
