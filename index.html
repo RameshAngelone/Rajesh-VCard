@@ -117,7 +117,6 @@
             border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
-        /* Directional lines */
         .bg-compass .line {
             position: absolute;
             top: 50%;
@@ -145,7 +144,6 @@
             transform: translateY(-50%) rotate(-45deg);
         }
 
-        /* Direction labels */
         .bg-compass .dir-label {
             position: absolute;
             font-size: 18px;
@@ -191,40 +189,7 @@
             top: 16%;
             left: 16%;
         }
-        .bg-compass .dir-label.nne {
-            top: 6%;
-            right: 30%;
-        }
-        .bg-compass .dir-label.ene {
-            top: 30%;
-            right: 6%;
-        }
-        .bg-compass .dir-label.ese {
-            bottom: 30%;
-            right: 6%;
-        }
-        .bg-compass .dir-label.sse {
-            bottom: 6%;
-            right: 30%;
-        }
-        .bg-compass .dir-label.ssw {
-            bottom: 6%;
-            left: 30%;
-        }
-        .bg-compass .dir-label.wsw {
-            bottom: 30%;
-            left: 6%;
-        }
-        .bg-compass .dir-labelwnw {
-            top: 30%;
-            left: 6%;
-        }
-        .bg-compass .dir-label.nw {
-            top: 6%;
-            left: 30%;
-        }
 
-        /* Small direction dots */
         .bg-compass .dot {
             position: absolute;
             width: 4px;
@@ -478,6 +443,100 @@
             color: #b8922a;
         }
 
+        /* ─── Rotating Gold Ring / Compass around profile ─── */
+        .profile-frame .gold-ring {
+            position: absolute;
+            inset: -6px;
+            border-radius: 20px;
+            padding: 3px;
+            background: conic-gradient(from 0deg, transparent, #d4af37, transparent, #f0d060, transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            animation: spinRing 8s linear infinite;
+            opacity: 0.6;
+        }
+
+        .profile-frame .gold-ring .ring-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 18px;
+            color: #d4af37;
+            opacity: 0.5;
+            animation: none;
+        }
+
+        @keyframes spinRing {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ─── Compass dots around the frame ─── */
+        .profile-frame .compass-dots {
+            position: absolute;
+            inset: -14px;
+            border-radius: 20px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .profile-frame .compass-dots .dot {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #d4af37;
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .profile-frame .compass-dots .dot:nth-child(1) {
+            top: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .profile-frame .compass-dots .dot:nth-child(2) {
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .profile-frame .compass-dots .dot:nth-child(3) {
+            left: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .profile-frame .compass-dots .dot:nth-child(4) {
+            right: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .profile-frame .compass-dots .dot:nth-child(5) {
+            top: 15%;
+            right: -2px;
+            transform: translateX(50%);
+        }
+        .profile-frame .compass-dots .dot:nth-child(6) {
+            bottom: 15%;
+            right: -2px;
+            transform: translateX(50%);
+        }
+        .profile-frame .compass-dots .dot:nth-child(7) {
+            top: 15%;
+            left: -2px;
+            transform: translateX(-50%);
+        }
+        .profile-frame .compass-dots .dot:nth-child(8) {
+            bottom: 15%;
+            left: -2px;
+            transform: translateX(-50%);
+        }
+
         .profile-info {
             display: flex;
             flex-direction: column;
@@ -492,22 +551,24 @@
             line-height: 1.2;
         }
 
+        /* ─── Action Buttons Row ─── Single line small buttons ─── */
         .action-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
             margin-top: 14px;
             position: relative;
             z-index: 1;
+            justify-content: flex-start;
         }
 
         .action-btn {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
+            gap: 6px;
+            padding: 5px 14px;
             border-radius: 60px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             font-family: 'Inter', sans-serif;
             cursor: pointer;
@@ -516,7 +577,8 @@
             border: 1.5px solid rgba(212, 175, 55, 0.30);
             background: #ffffff !important;
             color: #1a0f08;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            white-space: nowrap;
         }
 
         .action-btn:hover {
@@ -527,12 +589,16 @@
         }
 
         .action-btn .a-icon {
-            font-size: 16px;
+            font-size: 14px;
         }
         .action-btn .a-label {
-            font-size: 11px;
+            font-size: 10px;
             color: #8a7a6a;
             font-weight: 400;
+        }
+
+        .action-btn .a-text {
+            font-size: 11px;
         }
 
         .section-title-wrap {
@@ -944,7 +1010,6 @@
             color: #b8922a;
         }
 
-        /* ─── GPay Section ─── */
         .gpay-section {
             margin-top: 14px;
             position: relative;
@@ -1034,7 +1099,6 @@
             border-color: rgba(212, 175, 55, 0.12);
         }
 
-        /* ─── Pay with Google Pay Button ─── */
         .gpay-pay-btn {
             display: inline-flex;
             align-items: center;
@@ -1080,7 +1144,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* ─── Google Reviews Button ─── */
         .reviews-btn-wrap {
             display: flex;
             justify-content: center;
@@ -1272,43 +1335,6 @@
             font-size: 18px;
         }
 
-        .website-btn-wrap {
-            display: flex;
-            justify-content: center;
-            margin-top: 8px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .website-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 20px;
-            border-radius: 60px;
-            font-size: 12px;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 1.5px solid rgba(212, 175, 55, 0.30);
-            background: #ffffff !important;
-            color: #1a0f08;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-            text-decoration: none;
-        }
-
-        .website-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(212, 175, 55, 0.06);
-            background: #fcf8f2 !important;
-            border-color: #d4af37;
-        }
-
-        .website-btn .w-icon {
-            font-size: 16px;
-        }
-
         .location-btn {
             background: #ffffff !important;
             border: 1.5px solid rgba(212, 175, 55, 0.30);
@@ -1352,39 +1378,9 @@
             color: #b8922a;
         }
 
+        /* ─── Social Row - REMOVED ─── */
         .social-row {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 6px;
-            flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #ffffff !important;
-            border: 1.5px solid rgba(212, 175, 55, 0.30);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 17px;
-            color: #5a4a3a;
-            transition: all 0.35s ease;
-            text-decoration: none;
-            cursor: pointer;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-        }
-
-        .social-link:hover {
-            background: #fcf8f2 !important;
-            color: #b8922a;
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.06);
-            border-color: #d4af37;
+            display: none !important;
         }
 
         .footer {
@@ -1791,8 +1787,14 @@
                 justify-content: center;
             }
             .action-btn {
-                font-size: 12px;
-                padding: 6px 14px;
+                font-size: 11px;
+                padding: 4px 12px;
+            }
+            .action-btn .a-icon {
+                font-size: 13px;
+            }
+            .action-btn .a-text {
+                font-size: 10px;
             }
             .bg-compass {
                 width: 400px;
@@ -1877,14 +1879,6 @@
             .stat-box .num {
                 font-size: 26px;
             }
-            .social-row {
-                gap: 8px;
-            }
-            .social-link {
-                width: 36px;
-                height: 36px;
-                font-size: 15px;
-            }
             .cta-btn {
                 font-size: 12px;
                 padding: 9px 14px;
@@ -1939,16 +1933,16 @@
                 align-items: center;
                 width: 100%;
             }
-            .website-btn {
-                font-size: 11px;
-                padding: 6px 16px;
-            }
             .profile-info .profile-name {
                 font-size: 15px;
             }
             .gpay-pay-btn {
                 font-size: 13px;
                 padding: 8px 18px;
+            }
+            .profile-frame .compass-dots .dot {
+                width: 3px;
+                height: 3px;
             }
         }
 
@@ -1994,6 +1988,21 @@
                 opacity: 0.15;
             }
 
+            .action-btn {
+                font-size: 10px;
+                padding: 3px 10px;
+                gap: 4px;
+            }
+            .action-btn .a-icon {
+                font-size: 12px;
+            }
+            .action-btn .a-text {
+                font-size: 9px;
+            }
+            .action-row {
+                gap: 4px;
+            }
+
             .elements-grid {
                 gap: 4px;
             }
@@ -2024,17 +2033,6 @@
             }
             .stat-box {
                 padding: 10px 4px;
-            }
-            .action-btn {
-                font-size: 11px;
-                padding: 5px 10px;
-                gap: 5px;
-            }
-            .action-btn .a-icon {
-                font-size: 14px;
-            }
-            .action-row {
-                gap: 6px;
             }
             .cta-btn {
                 font-size: 11px;
@@ -2080,11 +2078,6 @@
             }
             .footer {
                 font-size: 9px;
-            }
-            .social-link {
-                width: 32px;
-                height: 32px;
-                font-size: 13px;
             }
             .location-btn {
                 font-size: 12px;
@@ -2166,10 +2159,6 @@
                 align-items: center;
                 width: 100%;
             }
-            .website-btn {
-                font-size: 10px;
-                padding: 5px 14px;
-            }
             .profile-info .profile-name {
                 font-size: 14px;
             }
@@ -2180,14 +2169,18 @@
             .gpay-pay-btn .gp-icon {
                 font-size: 17px;
             }
-            .bg-compass .dir-label.nne,
-            .bg-compass .dir-label.ene,
-            .bg-compass .dir-label.ese,
-            .bg-compass .dir-label.sse,
-            .bg-compass .dir-label.ssw,
-            .bg-compass .dir-label.wsw,
-            .bg-compass .dir-labelwnw {
+            .bg-compass .dir-label.ne,
+            .bg-compass .dir-label.se,
+            .bg-compass .dir-label.sw,
+            .bg-compass .dir-label.nw {
                 display: none;
+            }
+            .profile-frame .compass-dots .dot {
+                width: 2px;
+                height: 2px;
+            }
+            .profile-frame .compass-dots {
+                inset: -10px;
             }
         }
 
@@ -2221,11 +2214,16 @@
             .bg-compass .dir-label {
                 font-size: 9px;
             }
-            .bg-compass .dir-label.ne,
-            .bg-compass .dir-label.se,
-            .bg-compass .dir-label.sw,
-            .bg-compass .dir-label.nw {
-                display: none;
+            .action-btn {
+                font-size: 9px;
+                padding: 2px 8px;
+                gap: 3px;
+            }
+            .action-btn .a-icon {
+                font-size: 10px;
+            }
+            .action-btn .a-text {
+                font-size: 8px;
             }
         }
 
@@ -2263,7 +2261,9 @@
                 padding-bottom: 0;
             }
             .bg-compass,
-            #particles-canvas {
+            #particles-canvas,
+            .floating-actions,
+            .toast {
                 display: none !important;
             }
             .glass-frame {
@@ -2276,9 +2276,7 @@
             .glass-frame::before,
             .glass-frame::after,
             .glow-bar,
-            .orb,
-            .floating-actions,
-            .toast {
+            .orb {
                 display: none !important;
             }
             .hero-content h1,
@@ -2301,9 +2299,7 @@
             .qr-box,
             .reviews-btn,
             .location-btn,
-            .social-link,
             .download-btn,
-            .website-btn,
             .gpay-pay-btn {
                 background: #f8f8f8 !important;
                 border-color: #d4af37 !important;
@@ -2382,6 +2378,10 @@
             .profile-frame img {
                 border-radius: 8px !important;
             }
+            .profile-frame .gold-ring,
+            .profile-frame .compass-dots {
+                display: none !important;
+            }
             .action-btn {
                 color: #000 !important;
             }
@@ -2401,14 +2401,6 @@
             }
             .qr-label {
                 color: #999 !important;
-            }
-            .social-link {
-                border-color: #ccc !important;
-                color: #999 !important;
-            }
-            .social-link:hover {
-                background: none !important;
-                transform: none !important;
             }
             .glass-frame:hover {
                 transform: none !important;
@@ -2454,12 +2446,10 @@
         <div class="compass-ring">
             <div class="inner-ring"></div>
             <div class="inner-ring2"></div>
-            <!-- Direction lines -->
             <div class="line"></div>
             <div class="line vertical"></div>
             <div class="line diag1"></div>
             <div class="line diag2"></div>
-            <!-- Direction labels -->
             <span class="dir-label n">N</span>
             <span class="dir-label s">S</span>
             <span class="dir-label e">E</span>
@@ -2468,7 +2458,6 @@
             <span class="dir-label se">SE</span>
             <span class="dir-label sw">SW</span>
             <span class="dir-label nw">NW</span>
-            <!-- Small dots -->
             <span class="dot n"></span>
             <span class="dot s"></span>
             <span class="dot e"></span>
@@ -2512,6 +2501,19 @@
                 <div class="profile-wrapper">
                     <div class="profile-frame">
                         <img src="rajesh.png" alt="Raajesh Tank">
+                        <!-- Rotating Gold Ring -->
+                        <div class="gold-ring"></div>
+                        <!-- Compass Dots -->
+                        <div class="compass-dots">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
                     </div>
                     <div class="profile-info">
                         <div class="profile-name">Raajesh Tank</div>
@@ -2519,31 +2521,23 @@
                 </div>
             </div>
 
-            <!-- ─── ACTION BUTTONS ROW ─── -->
+            <!-- ─── ACTION BUTTONS ROW ─── Single line small buttons -->
             <div class="action-row">
-                <button class="action-btn" onclick="callPhone()">
+                <a class="action-btn" onclick="callPhone()" href="javascript:void(0)">
                     <span class="a-icon">📞</span>
-                    <span>Call <span class="a-label">| +91 8793008108</span></span>
-                </button>
-                <button class="action-btn" onclick="openWhatsApp()">
+                    <span class="a-text">Call</span>
+                </a>
+                <a class="action-btn" onclick="openWhatsApp()" href="javascript:void(0)">
                     <span class="a-icon">💬</span>
-                    <span>WhatsApp <span class="a-label">| Chat</span></span>
-                </button>
-                <button class="action-btn" onclick="copyEmail('vastushakkti@gmail.com')">
+                    <span class="a-text">WhatsApp</span>
+                </a>
+                <a class="action-btn" href="mailto:vastushakkti@gmail.com">
                     <span class="a-icon">✉️</span>
-                    <span>Email <span class="a-label">| vastushakkti@gmail.com</span></span>
-                </button>
-                <button class="action-btn" onclick="copyEmail('rajeshtank108@gmail.com')">
-                    <span class="a-icon">✉️</span>
-                    <span>Email <span class="a-label">| rajeshtank108@gmail.com</span></span>
-                </button>
-            </div>
-
-            <!-- ─── WEBSITE BUTTON ─── -->
-            <div class="website-btn-wrap">
-                <a class="website-btn" href="https://www.vastulaksitah.com" target="_blank">
-                    <span class="w-icon">🌐</span>
-                    www.vastulaksitah.com
+                    <span class="a-text">Email</span>
+                </a>
+                <a class="action-btn" href="https://www.vastulaksitah.com" target="_blank">
+                    <span class="a-icon">🌐</span>
+                    <span class="a-text">Website</span>
                 </a>
             </div>
 
@@ -2784,7 +2778,7 @@
                 </div>
             </div>
 
-            <!-- ─── GPAY QR CODE WITH PAY BUTTON ─── -->
+            <!-- ─── GPAY QR CODE ─── -->
             <div class="gpay-section">
                 <div class="section-title-wrap" style="margin-bottom:10px;">
                     <span class="section-title"><span class="icon">📱</span> Pay via GPay / UPI</span>
@@ -2860,20 +2854,13 @@
                 <span class="loc-arrow">→</span>
             </button>
 
-            <!-- ─── SOCIAL ─── -->
-            <div class="social-row">
-                <button class="social-link" onclick="socialLink('instagram')" aria-label="Instagram">📸</button>
-                <button class="social-link" onclick="socialLink('facebook')" aria-label="Facebook">👍</button>
-                <button class="social-link" onclick="socialLink('youtube')" aria-label="YouTube">▶️</button>
-                <button class="social-link" onclick="socialLink('linkedin')" aria-label="LinkedIn">🔗</button>
-                <button class="social-link" onclick="socialLink('twitter')" aria-label="Twitter">🐦</button>
-            </div>
+            <!-- ─── SOCIAL ROW - REMOVED ─── -->
 
             <!-- ─── FOOTER ─── -->
             <div class="footer">
                 <span>© 2026 Ramesh Chotalia — All Rights Reserved</span>
                 <span class="tag">✦ Vastu Correct, Life Perfect ✦</span>
-                <span class="version">vCard v10.0</span>
+                <span class="version">vCard v11.0</span>
             </div>
 
         </div>
@@ -3383,21 +3370,6 @@
             window.open(url, '_blank');
         }
 
-        function socialLink(platform) {
-            const urls = {
-                instagram: 'https://instagram.com/your-profile',
-                facebook: 'https://facebook.com/your-page',
-                youtube: 'https://youtube.com/your-channel',
-                linkedin: 'https://linkedin.com/in/your-profile',
-                twitter: 'https://twitter.com/your-handle'
-            };
-            if (urls[platform]) {
-                window.open(urls[platform], '_blank');
-            } else {
-                alert(`🌐 Follow us on ${platform.charAt(0).toUpperCase() + platform.slice(1)}`);
-            }
-        }
-
         // ─── Sliders ───
         let currentSlide = 0;
         let slideInterval;
@@ -3543,14 +3515,16 @@
             nextTip();
         }, 1000);
 
-        console.log('🕉️ VASTULAKSITAH · Vastu Consultant — Premium vCard v10.0');
+        console.log('🕉️ VASTULAKSITAH · Vastu Consultant — Premium vCard v11.0');
         console.log('📍 Location: PCMC, Wakad, Pune');
         console.log('💬 WhatsApp: +91 8793008108');
         console.log('🌐 Website: www.vastulaksitah.com');
-        console.log('📧 Emails: vastushakkti@gmail.com, rajeshtank108@gmail.com');
+        console.log('📧 Email: vastushakkti@gmail.com, rajeshtank108@gmail.com');
         console.log('📱 GPay QR: gpayqrcode.jpeg | V-Card QR: Vcardqrcode.png');
         console.log('💳 UPI: rajeshtank108@okicici');
-        console.log('🧭 Large Vastu Compass rotating in the background!');
+        console.log('🧭 Rotating gold compass ring around profile image restored!');
+        console.log('📧 Email button opens Gmail directly!');
+        console.log('📱 Call, WhatsApp, Email, Website in single line!');
     </script>
 
 </body>
