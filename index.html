@@ -325,7 +325,7 @@
             }
         }
 
-        /* ─── Profile Info (Name & Phone below image) ─── */
+        /* ─── Profile Info (Name only - phone removed) ─── */
         .profile-info {
             display: flex;
             flex-direction: column;
@@ -338,12 +338,6 @@
             font-weight: 700;
             color: #1a0f08;
             line-height: 1.2;
-        }
-
-        .profile-info .profile-phone {
-            font-size: 13px;
-            font-weight: 500;
-            color: #5a4a3a;
         }
 
         /* ─── Action Buttons Row ─── */
@@ -522,6 +516,19 @@
             padding: 14px 16px;
             transition: all 0.35s ease;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+            max-height: 420px;
+            overflow-y: auto;
+        }
+
+        .sub-card::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sub-card::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .sub-card::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 10px;
         }
 
         .sub-card:hover {
@@ -1648,6 +1655,9 @@
                 grid-template-columns: 1fr;
                 gap: 10px;
             }
+            .sub-card {
+                max-height: 350px;
+            }
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 8px;
@@ -1759,9 +1769,6 @@
             }
             .profile-info .profile-name {
                 font-size: 15px;
-            }
-            .profile-info .profile-phone {
-                font-size: 12px;
             }
         }
 
@@ -1875,6 +1882,7 @@
             }
             .sub-card {
                 padding: 10px 12px;
+                max-height: 280px;
             }
             .sub-card .item-btn {
                 font-size: 11px;
@@ -1975,9 +1983,6 @@
             }
             .profile-info .profile-name {
                 font-size: 14px;
-            }
-            .profile-info .profile-phone {
-                font-size: 11px;
             }
         }
 
@@ -2206,9 +2211,6 @@
             .profile-info .profile-name {
                 color: #000 !important;
             }
-            .profile-info .profile-phone {
-                color: #666 !important;
-            }
         }
     </style>
 </head>
@@ -2244,7 +2246,7 @@
             <div class="hero">
                 <div class="hero-content">
                     <span class="badge">✦ Vedik Vastu Consultant</span>
-                    <h1>VASTU<span class="gold">LAKSITAH</span></h1>
+                    <h1><span class="gold">VASTULAKSITAH</span></h1>
                     <div class="brand-sub">✦ VASTU SHAKKTI ✦</div>
                     <div class="tagline"><span class="q">“</span> Change the direction, Change the Situation <span class="q">”</span></div>
                 </div>
@@ -2256,7 +2258,6 @@
                     </div>
                     <div class="profile-info">
                         <div class="profile-name">Raajesh Tank</div>
-                        <div class="profile-phone">+91 98765 43210</div>
                     </div>
                 </div>
             </div>
@@ -2271,9 +2272,13 @@
                     <span class="a-icon">💬</span>
                     <span>WhatsApp <span class="a-label">| Chat</span></span>
                 </button>
-                <button class="action-btn" onclick="copyEmail()">
+                <button class="action-btn" onclick="copyEmail('vastushakkti@gmail.com')">
                     <span class="a-icon">✉️</span>
                     <span>Email <span class="a-label">| vastushakkti@gmail.com</span></span>
+                </button>
+                <button class="action-btn" onclick="copyEmail('rajeshtank108@gmail.com')">
+                    <span class="a-icon">✉️</span>
+                    <span>Email <span class="a-label">| rajeshtank108@gmail.com</span></span>
                 </button>
             </div>
 
@@ -2327,6 +2332,7 @@
             <div class="sub-grid">
                 <div class="sub-card">
                     <span class="label-sm">✦ Our Services</span>
+
                     <button class="item-btn" onclick="showService('residential')">
                         <span class="dot"></span>
                         <div>
@@ -2360,6 +2366,57 @@
                         <div>
                             <span class="item-label">Vastu Corrections</span>
                             <span class="item-desc">Remedial solutions · Energy balancing</span>
+                        </div>
+                    </button>
+
+                    <!-- New Services -->
+                    <button class="item-btn" onclick="showService('vedic')">
+                        <span class="dot"></span>
+                        <div>
+                            <span class="item-label">Vedic Vastu</span>
+                            <span class="item-desc">Ancient wisdom · Sacred geometry</span>
+                        </div>
+                    </button>
+                    <button class="item-btn" onclick="showService('pyramid')">
+                        <span class="dot"></span>
+                        <div>
+                            <span class="item-label">Pyramid Vastu</span>
+                            <span class="item-desc">Energy amplification · Cosmic alignment</span>
+                        </div>
+                    </button>
+                    <button class="item-btn" onclick="showService('tantra')">
+                        <span class="dot"></span>
+                        <div>
+                            <span class="item-label">Tantra Vastu</span>
+                            <span class="item-desc">Mystical energies · Spiritual harmony</span>
+                        </div>
+                    </button>
+                    <button class="item-btn" onclick="showService('rudraksh')">
+                        <span class="dot"></span>
+                        <div>
+                            <span class="item-label">Rudraksh Vastu</span>
+                            <span class="item-desc">Divine beads · Protective energies</span>
+                        </div>
+                    </button>
+                    <button class="item-btn" onclick="showService('vanaspati')">
+                        <span class="dot"></span>
+                        <div>
+                            <span class="item-label">Vanaspati Vastu</span>
+                            <span class="item-desc">Herbal remedies · Natural balance</span>
+                        </div>
+                    </button>
+                    <button class="item-btn" onclick="showService('numerology')">
+                        <span class="dot"></span>
+                        <div>
+                            <span class="item-label">Numerology</span>
+                            <span class="item-desc">Number science · Life path analysis</span>
+                        </div>
+                    </button>
+                    <button class="item-btn" onclick="showService('panchapakshi')">
+                        <span class="dot"></span>
+                        <div>
+                            <span class="item-label">Panchapakshi</span>
+                            <span class="item-desc">Five birds · Time & direction science</span>
                         </div>
                     </button>
                 </div>
@@ -2580,7 +2637,7 @@
                 <div class="md-item"><span class="md-dot">◆</span> <span id="elD4">Color: Yellow / Brown</span></div>
             </div>
             <div class="modal-phone" onclick="callPhone()">
-                <span class="mp-label">📞 Call Consultant</span> +91 98765 43210
+                <span class="mp-label">📞 Call Consultant</span> +91 8793008108
             </div>
         </div>
     </div>
@@ -2715,6 +2772,111 @@
                            <li>Simple, affordable corrective measures</li>
                            <li>Use of pyramids, yantras, mirrors & colors</li>
                            <li>Step-by-step implementation guidance</li>
+                       </ul>`
+            },
+            vedic: {
+                icon: '📜',
+                name: 'Vedic Vastu',
+                desc: `<strong>What is it?</strong><br>
+                       Vedic Vastu is the ancient science of architecture based on the Vedas. It uses sacred geometry, directional alignments, and cosmic principles to create spaces that are in perfect harmony with the universe.
+                       <br><br>
+                       <strong>Our Service Includes:</strong>
+                       <ul>
+                           <li>Vedic architectural consultation</li>
+                           <li>Sacred geometry analysis</li>
+                           <li>Directional alignment as per Vedas</li>
+                           <li>Mantra-based energy activation</li>
+                           <li>Customized Vedic Vastu plan</li>
+                       </ul>`
+            },
+            pyramid: {
+                icon: '🔺',
+                name: 'Pyramid Vastu',
+                desc: `<strong>What is it?</strong><br>
+                       Pyramid Vastu uses the powerful energy of pyramids to amplify positive vibrations and neutralize negative energies. Pyramids create a focused energy field that enhances health, wealth, and spiritual growth.
+                       <br><br>
+                       <strong>Our Service Includes:</strong>
+                       <ul>
+                           <li>Pyramid energy assessment</li>
+                           <li>Optimal pyramid placement</li>
+                           <li>Pyramid size and material selection</li>
+                           <li>Energy amplification techniques</li>
+                           <li>Custom pyramid installation guidance</li>
+                       </ul>`
+            },
+            tantra: {
+                icon: '🔯',
+                name: 'Tantra Vastu',
+                desc: `<strong>What is it?</strong><br>
+                       Tantra Vastu combines the mystical sciences of Tantra with Vastu principles to remove deep-seated energy blocks and activate hidden potentials. It works on the subtle energy layers of a space.
+                       <br><br>
+                       <strong>Our Service Includes:</strong>
+                       <ul>
+                           <li>Tantric energy mapping</li>
+                           <li>Removal of negative energy entities</li>
+                           <li>Yantra and mantra placement</li>
+                           <li>Activation of hidden energy centers</li>
+                           <li>Complete tantric space purification</li>
+                       </ul>`
+            },
+            rudraksh: {
+                icon: '📿',
+                name: 'Rudraksh Vastu',
+                desc: `<strong>What is it?</strong><br>
+                       Rudraksh Vastu harnesses the divine power of Rudraksha beads to protect and energize your space. Rudraksha beads are known for their ability to absorb negative energies and radiate positivity.
+                       <br><br>
+                       <strong>Our Service Includes:</strong>
+                       <ul>
+                           <li>Rudraksh energy assessment</li>
+                           <li>Selection of appropriate Rudraksha types</li>
+                           <li>Strategic placement in your space</li>
+                           <li>Protection against negative influences</li>
+                           <li>Customized Rudraksh Vastu plan</li>
+                       </ul>`
+            },
+            vanaspati: {
+                icon: '🌿',
+                name: 'Vanaspati Vastu',
+                desc: `<strong>What is it?</strong><br>
+                       Vanaspati Vastu uses the healing power of plants and herbs to balance the energy of your space. It combines traditional Vastu with Ayurvedic principles to create a naturally harmonious environment.
+                       <br><br>
+                       <strong>Our Service Includes:</strong>
+                       <ul>
+                           <li>Plant energy assessment</li>
+                           <li>Selection of Vastu-compliant plants</li>
+                           <li>Placement guidance for maximum benefit</li>
+                           <li>Herbal remedies for energy balance</li>
+                           <li>Customized Vanaspati Vastu plan</li>
+                       </ul>`
+            },
+            numerology: {
+                icon: '🔢',
+                name: 'Numerology',
+                desc: `<strong>What is it?</strong><br>
+                       Numerology is the science of numbers and their influence on our lives. It helps you understand your life path, destiny, and the vibrational frequency of your home and business numbers.
+                       <br><br>
+                       <strong>Our Service Includes:</strong>
+                       <ul>
+                           <li>Life path number analysis</li>
+                           <li>Destiny number calculation</li>
+                           <li>Name and address numerology</li>
+                           <li>Lucky number guidance</li>
+                           <li>Personalized numerology report</li>
+                       </ul>`
+            },
+            panchapakshi: {
+                icon: '🕊️',
+                name: 'Panchapakshi',
+                desc: `<strong>What is it?</strong><br>
+                       Panchapakshi is an ancient South Indian science of time and direction based on five birds. It helps you choose the most auspicious times and directions for important activities and decisions.
+                       <br><br>
+                       <strong>Our Service Includes:</strong>
+                       <ul>
+                           <li>Panchapakshi consultation</li>
+                           <li>Daily auspicious time analysis</li>
+                           <li>Directional guidance for activities</li>
+                           <li>Personalized Panchapakshi chart</li>
+                           <li>Integration with Vastu principles</li>
                        </ul>`
             }
         };
@@ -2851,16 +3013,15 @@
 
         // ─── Phone ───
         function callPhone() {
-            const phone = '+919876543210';
+            const phone = '+918793008108';
             if (confirm(`📞 Call ${phone} ?`)) {
                 window.location.href = `tel:${phone}`;
             }
         }
 
         // ─── Copy Email ───
-        function copyEmail() {
-            const email = 'vastushakkti@gmail.com';
-            copyToClipboard(email, '✉️ Email address copied!');
+        function copyEmail(email) {
+            copyToClipboard(email, `✉️ ${email} copied!`);
         }
 
         // ─── Copy UPI ───
@@ -2909,7 +3070,7 @@
 
         // ─── WhatsApp ───
         function openWhatsApp() {
-            const phone = '919876543210';
+            const phone = '918793008108';
             const msg = encodeURIComponent(
                 '🕉️ Hello,\n\nI would like to book a Vastu consultation with VASTULAKSITAH. Please share your availability.\n\n📋 Name: \n📍 Location: \n🏠 Type: Residential / Commercial / Industrial'
             );
@@ -2925,13 +3086,13 @@
         // ─── Report ───
         function getReport() {
             alert(
-                '📊 Get Vastu Report\n\nWe provide detailed Vastu reports with actionable insights.\n\n📞 Call: +91 98765 43210\n💬 WhatsApp: Click "Book Consultation" to request a report.');
+                '📊 Get Vastu Report\n\nWe provide detailed Vastu reports with actionable insights.\n\n📞 Call: +91 8793008108\n💬 WhatsApp: Click "Book Consultation" to request a report.');
         }
 
         // ─── Save Contact (vCard) ───
         function saveContact() {
             const vcard =
-                `BEGIN:VCARD\nVERSION:3.0\nFN:VASTULAKSITAH\nORG:Vastu Consultant\nTEL;TYPE=CELL:+919876543210\nEMAIL:vastushakkti@gmail.com\nADR;TYPE=WORK:;;PCMC Wakad;Pune;Maharashtra;411057;India\nNOTE:Vastu Consultant - "Change the direction, Change the Situation."\nURL:https://www.vastulaksitah.com\nEND:VCARD`;
+                `BEGIN:VCARD\nVERSION:3.0\nFN:VASTULAKSITAH\nORG:Vastu Consultant\nTEL;TYPE=CELL:+918793008108\nEMAIL:vastushakkti@gmail.com\nEMAIL:rajeshtank108@gmail.com\nADR;TYPE=WORK:;;PCMC Wakad;Pune;Maharashtra;411057;India\nNOTE:Vastu Consultant - "Change the direction, Change the Situation."\nURL:https://www.vastulaksitah.com\nEND:VCARD`;
             const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -2952,7 +3113,7 @@
         // ─── Share ───
         function shareCard() {
             const msg =
-                `🕉️ VASTULAKSITAH — Vastu Consultant\n"Change the direction, Change the Situation."\n📞 +91 98765 43210\n📍 PCMC, Wakad, Pune\n💬 Book Consultation: https://wa.me/919876543210\n🌐 www.vastulaksitah.com\n\n${window.location.href}`;
+                `🕉️ VASTULAKSITAH — Vastu Consultant\n"Change the direction, Change the Situation."\n📞 +91 8793008108\n📍 PCMC, Wakad, Pune\n💬 Book Consultation: https://wa.me/918793008108\n🌐 www.vastulaksitah.com\n\n${window.location.href}`;
             if (navigator.share) {
                 navigator.share({ title: 'VASTULAKSITAH · Vastu Consultant', text: msg, url: window.location.href })
                     .catch(() => {});
@@ -3141,10 +3302,10 @@
         console.log('🕉️ VASTULAKSITAH · Vastu Consultant — Premium vCard v8.0');
         console.log('📱 QR encodes:', window.location.href);
         console.log('📍 Location: PCMC, Wakad, Pune');
-        console.log('💬 WhatsApp: +91 98765 43210');
+        console.log('💬 WhatsApp: +91 8793008108');
         console.log('🌐 Website: www.vastulaksitah.com');
-        console.log('📧 Email: vastushakkti@gmail.com');
-        console.log('✨ Features: Gold Particles | Testimonials | Vastu Tips | GPay QR | Animated Counters | Floating Buttons');
+        console.log('📧 Emails: vastushakkti@gmail.com, rajeshtank108@gmail.com');
+        console.log('✨ Updated Services: Vedic, Pyramid, Tantra, Rudraksh, Vanaspati, Numerology, Panchapakshi');
         console.log('📸 To add your photo: Replace the src in .profile-frame img with your photo URL');
         console.log('📱 To add GPay QR: Replace the placeholder in .gpay-qr with your QR code image');
     </script>
