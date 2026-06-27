@@ -33,7 +33,7 @@
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
             padding: 20px;
-            padding-bottom: 100px;
+            padding-bottom: 40px;
             -webkit-tap-highlight-color: transparent;
         }
 
@@ -1324,7 +1324,7 @@
             font-size: 18px;
         }
 
-        /* ─── LOCATION BUTTON WITH FULL ADDRESS ─── */
+        /* ─── LOCATION BUTTON WITH FULL ADDRESS MULTI-LINE ─── */
         .location-btn {
             background: #ffffff !important;
             border: 1.5px solid rgba(212, 175, 55, 0.30);
@@ -1347,7 +1347,7 @@
             position: relative;
             z-index: 1;
             text-align: center;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .location-btn:hover {
@@ -1360,6 +1360,8 @@
         .location-btn .loc-icon {
             font-size: 20px;
             flex-shrink: 0;
+            align-self: flex-start;
+            margin-top: 2px;
         }
 
         .location-btn .loc-text {
@@ -1368,27 +1370,28 @@
             color: #1a0f08;
             flex: 1;
             min-width: 200px;
+            text-align: left;
+            line-height: 1.7;
+        }
+
+        .location-btn .loc-text .line {
+            display: block;
         }
 
         .location-btn .loc-arrow {
             font-size: 16px;
             color: #b8922a;
             flex-shrink: 0;
-            margin-left: auto;
-        }
-
-        .location-btn .loc-sub {
-            font-size: 10px;
-            color: #8a7a6a;
-            font-weight: 400;
-            display: block;
-            width: 100%;
-            text-align: center;
-            margin-top: 2px;
+            align-self: center;
         }
 
         /* ─── Social Row - REMOVED ─── */
         .social-row {
+            display: none !important;
+        }
+
+        /* ─── Floating Action Buttons - REMOVED ─── */
+        .floating-actions {
             display: none !important;
         }
 
@@ -1427,83 +1430,6 @@
             color: #8a7a6a;
             opacity: 0.5;
             background: #ffffff !important;
-        }
-
-        .floating-actions {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 1000;
-        }
-
-        .floating-btn {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            border: 2px solid #d4af37;
-            background: #ffffff !important;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-            text-decoration: none;
-            color: #1a0f08;
-            position: relative;
-        }
-
-        .floating-btn:hover {
-            transform: scale(1.08) translateY(-2px);
-            box-shadow: 0 12px 40px rgba(212, 175, 55, 0.20);
-            border-color: #f0d060;
-        }
-
-        .floating-btn .fb-tooltip {
-            position: absolute;
-            right: 68px;
-            background: #1a0f08;
-            color: #ffffff;
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 500;
-            white-space: nowrap;
-            opacity: 0;
-            transform: translateX(8px);
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-
-        .floating-btn:hover .fb-tooltip {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .floating-btn.whatsapp {
-            background: linear-gradient(135deg, #25D366, #128C7E) !important;
-            color: #ffffff;
-            border-color: #25D366;
-        }
-
-        .floating-btn.whatsapp:hover {
-            border-color: #25D366;
-            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.30);
-        }
-
-        .floating-btn.call {
-            background: linear-gradient(135deg, #34B7F1, #1A8CD8) !important;
-            color: #ffffff;
-            border-color: #34B7F1;
-        }
-
-        .floating-btn.call:hover {
-            border-color: #34B7F1;
-            box-shadow: 0 12px 40px rgba(52, 183, 241, 0.30);
         }
 
         .toast {
@@ -1756,7 +1682,7 @@
         @media (max-width: 820px) {
             body {
                 padding: 12px;
-                padding-bottom: 90px;
+                padding-bottom: 30px;
             }
             .glass-frame {
                 padding: 20px 16px 18px;
@@ -1900,19 +1826,6 @@
             .location-btn .loc-text {
                 font-size: 12px;
             }
-            .location-btn .loc-sub {
-                font-size: 9px;
-            }
-            .floating-actions {
-                bottom: 16px;
-                right: 16px;
-                gap: 10px;
-            }
-            .floating-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
             .testimonial-slider {
                 padding: 16px 16px 12px;
                 min-height: 130px;
@@ -1965,7 +1878,7 @@
         @media (max-width: 480px) {
             body {
                 padding: 8px;
-                padding-bottom: 80px;
+                padding-bottom: 20px;
             }
             .glass-frame {
                 padding: 14px 10px 14px;
@@ -2102,12 +2015,13 @@
                 flex-direction: column;
                 text-align: center;
             }
+            .location-btn .loc-icon {
+                align-self: center;
+            }
             .location-btn .loc-text {
                 font-size: 11px;
                 min-width: unset;
-            }
-            .location-btn .loc-sub {
-                font-size: 9px;
+                text-align: center;
             }
             .location-btn .loc-arrow {
                 margin-left: 0;
@@ -2127,19 +2041,6 @@
             .modal-box .modal-phone {
                 font-size: 13px;
                 padding: 6px;
-            }
-            .floating-actions {
-                bottom: 12px;
-                right: 12px;
-                gap: 8px;
-            }
-            .floating-btn {
-                width: 44px;
-                height: 44px;
-                font-size: 18px;
-            }
-            .floating-btn .fb-tooltip {
-                display: none;
             }
             .testimonial-slider {
                 padding: 12px 14px 10px;
@@ -2294,7 +2195,6 @@
             }
             .bg-compass,
             #particles-canvas,
-            .floating-actions,
             .toast {
                 display: none !important;
             }
@@ -2369,9 +2269,6 @@
             }
             .location-btn .loc-text {
                 color: #000 !important;
-            }
-            .location-btn .loc-sub {
-                color: #666 !important;
             }
             .section-title {
                 background: #f0f0f0 !important;
@@ -2499,18 +2396,6 @@
 
     <!-- ─── Gold Particles Canvas ─── -->
     <canvas id="particles-canvas"></canvas>
-
-    <!-- ─── Floating Action Buttons ─── -->
-    <div class="floating-actions">
-        <a class="floating-btn whatsapp" onclick="openWhatsApp()" href="javascript:void(0)">
-            <span>💬</span>
-            <span class="fb-tooltip">WhatsApp</span>
-        </a>
-        <a class="floating-btn call" onclick="callPhone()" href="javascript:void(0)">
-            <span>📞</span>
-            <span class="fb-tooltip">Call Now</span>
-        </a>
-    </div>
 
     <!-- ─── Toast Notification ─── -->
     <div class="toast" id="toast"></div>
@@ -2878,15 +2763,16 @@
                 </button>
             </div>
 
-            <!-- ─── LOCATION WITH FULL ADDRESS & GOOGLE MAPS COORDINATES ─── -->
+            <!-- ─── LOCATION WITH MULTI-LINE ADDRESS ─── -->
             <button class="location-btn" onclick="openLocation()">
                 <span class="loc-icon">📍</span>
                 <span class="loc-text">
-                    S. no. 25, Office no. D-12, SILVER SPACE "A" Wing, Vishal Nagar,<br>
-                    Pune – Wakad Road, Jagtap Dairy, Pimple Nilakh, Pune 411027
+                    <span class="line">S. no. 25, Office no. D-12, SILVER SPACE "A" Wing,</span>
+                    <span class="line">Vishal Nagar, Pune – Wakad Road,</span>
+                    <span class="line">Jagtap Dairy, Pimple Nilakh,</span>
+                    <span class="line">Pune 411027, Maharashtra, India</span>
                 </span>
                 <span class="loc-arrow">→</span>
-                <span class="loc-sub">📍 18.5877818, 73.7827437 · Get Directions</span>
             </button>
 
             <!-- ─── SOCIAL ROW - REMOVED ─── -->
@@ -2895,7 +2781,7 @@
             <div class="footer">
                 <span>© 2026 Ramesh Chotalia — All Rights Reserved</span>
                 <span class="tag">✦ Vastu Correct, Life Perfect ✦</span>
-                <span class="version">vCard v11.0</span>
+                <span class="version">vCard v12.0</span>
             </div>
 
         </div>
@@ -3553,16 +3439,18 @@
             nextTip();
         }, 1000);
 
-        console.log('🕉️ VASTULAKSITAH · Vastu Consultant — Premium vCard v11.0');
-        console.log('📍 Location: S.no.25, Office D-12, SILVER SPACE "A" Wing, Vishal Nagar, Pune-Wakad Road, Jagtap Dairy, Pimple Nilakh, Pune 411027');
-        console.log('🗺️ Google Maps Coordinates: 18.5877818, 73.7827437');
+        console.log('🕉️ VASTULAKSITAH · Vastu Consultant — Premium vCard v12.0');
+        console.log('📍 S.no.25, Office D-12, SILVER SPACE "A" Wing, Vishal Nagar, Pune-Wakad Road, Jagtap Dairy, Pimple Nilakh, Pune 411027');
+        console.log('🗺️ Google Maps: 18.5877818, 73.7827437');
         console.log('💬 WhatsApp: +91 8793008108');
         console.log('🌐 Website: www.vastulaksitah.com');
         console.log('📧 Email: vastushakkti@gmail.com, rajeshtank108@gmail.com');
         console.log('📱 GPay QR: gpayqrcode.jpeg | V-Card QR: Vcardqrcode.png');
         console.log('💳 UPI: rajeshtank108@okicici');
-        console.log('🧭 Rotating gold compass ring around profile image restored!');
+        console.log('🧭 Rotating gold compass ring around profile image!');
         console.log('📱 Call, WhatsApp, Email, Website in single line!');
+        console.log('📍 Multi-line address added, coordinates/Get Directions removed!');
+        console.log('❌ Floating Call/WhatsApp buttons removed!');
     </script>
 
 </body>
