@@ -849,11 +849,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 32px;
-            color: #b8922a;
-            transition: all 0.3s ease;
             overflow: hidden;
             flex-shrink: 0;
+            transition: all 0.3s ease;
         }
 
         .gpay-box .gpay-qr img {
@@ -865,10 +863,6 @@
         .gpay-box .gpay-qr:hover {
             transform: scale(1.04);
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.08);
-        }
-
-        .gpay-box .gpay-qr .qr-placeholder {
-            font-size: 32px;
         }
 
         .gpay-box .gpay-upi {
@@ -2537,14 +2531,12 @@
                 </div>
                 <div class="gpay-box">
                     <div class="gpay-label">
-                        <span class="gpay-title">Scan to Pay</span>
+                        <span class="gpay-title">Scan To Pay</span>
                         <span class="gpay-sub">Google Pay · PhonePe · Paytm</span>
                         <button class="gpay-upi" onclick="copyUpi()">📋 Copy UPI: vastulaksitah@upi</button>
                     </div>
                     <div class="gpay-qr" id="gpayQR">
-                        <!-- REPLACE THE SRC WITH YOUR GPAY QR CODE IMAGE -->
-                        <!-- <img src="gpay-qr.png" alt="GPay QR Code" /> -->
-                        <span class="qr-placeholder">📱</span>
+                        <img src="gpayqrcode.jpeg" alt="Google Pay QR">
                     </div>
                 </div>
             </div>
@@ -2566,9 +2558,9 @@
             <div class="qr-cta-grid">
                 <div class="qr-box">
                     <div class="qr-wrapper">
-                        <div id="qrcode"></div>
+                        <img src="Vcardqrcode.png" alt="Scan To Connect">
                     </div>
-                    <span class="qr-label">⬇ Scan to Connect</span>
+                    <div class="qr-label">Scan To Connect</div>
                 </div>
                 <div class="cta-stack">
                     <button class="cta-btn primary" onclick="openWhatsApp()">
@@ -2613,9 +2605,9 @@
 
             <!-- ─── FOOTER ─── -->
             <div class="footer">
-                <span>© 2026 <span class="brand">VASTU<span>LAKSITAH</span></span> — All Rights Reserved</span>
+                <span>© 2026 Ramesh Chotalia — All Rights Reserved</span>
                 <span class="tag">✦ Vastu Correct, Life Perfect ✦</span>
-                <span class="version">vCard v8.0</span>
+                <span class="version">vCard v9.0</span>
             </div>
 
         </div>
@@ -2955,15 +2947,7 @@
         };
 
         // ─── QR Code ───
-        const qrContainer = document.getElementById('qrcode');
-        const qr = new QRCode(qrContainer, {
-            text: window.location.href,
-            width: 140,
-            height: 140,
-            colorDark: "#2c1a0e",
-            colorLight: "#ffffff",
-            correctLevel: QRCode.CorrectLevel.H
-        });
+        // QR is now static image, no need for QRCode library
 
         // ─── Element Show ───
         function showElement(key) {
@@ -3299,15 +3283,14 @@
         }, 1000);
 
         // ─── Console ───
-        console.log('🕉️ VASTULAKSITAH · Vastu Consultant — Premium vCard v8.0');
+        console.log('🕉️ VASTULAKSITAH · Vastu Consultant — Premium vCard v9.0');
         console.log('📱 QR encodes:', window.location.href);
         console.log('📍 Location: PCMC, Wakad, Pune');
         console.log('💬 WhatsApp: +91 8793008108');
         console.log('🌐 Website: www.vastulaksitah.com');
         console.log('📧 Emails: vastushakkti@gmail.com, rajeshtank108@gmail.com');
-        console.log('✨ Updated Services: Vedic, Pyramid, Tantra, Rudraksh, Vanaspati, Numerology, Panchapakshi');
         console.log('📸 To add your photo: Replace the src in .profile-frame img with your photo URL');
-        console.log('📱 To add GPay QR: Replace the placeholder in .gpay-qr with your QR code image');
+        console.log('📱 GPay QR: gpayqrcode.jpeg | V-Card QR: Vcardqrcode.png');
     </script>
 
 </body>
